@@ -8,22 +8,62 @@
 
   <!-- SEO Meta Tags -->
   <meta name="description"
-    content="A simple, distraction-free contraction timer and box breathing app. Track frequency, duration, and the 5-1-1 rule. Open source and privacy-focused." />
+    content="A beautifully designed, distraction-free contraction timer with an integrated 4-box breathing visualizer. Track contraction frequency, duration, and the 5-1-1 rule. 100% Free, Privacy-focused, and Open Source." />
   <meta name="keywords"
-    content="contraction timer, pregnancy, labor, 5-1-1 rule, box breathing, 4-box method, free, open source, Murdawk Media" />
+    content="contraction timer, pregnancy app, labor tracking, 5-1-1 rule, box breathing method, 4-box breathing, free contraction app, privacy-first health app, open source, Murdawk Media" />
   <meta name="author" content="Murdawk Media" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="language" content="English">
+
+  <link rel="canonical" href="https://contraction-timing.pages.dev" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Contraction Timer & Box Breathing" />
+  <meta property="og:url" content="https://contraction-timing.pages.dev" />
+  <meta property="og:title" content="Contraction Timer & Box Breathing App" />
   <meta property="og:description"
-    content="Distraction-free contraction timing and box breathing relaxation. Free and open source." />
+    content="Distraction-free contraction timing and box breathing relaxation. Track your labor accurately. Free and open source." />
+  <meta property="og:site_name" content="Contraction Timer by Murdawk Media" />
+  <meta property="og:image" content="https://contraction-timing.pages.dev/og-image.jpg" />
 
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Contraction Timer & Box Breathing" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://contraction-timing.pages.dev" />
+  <meta name="twitter:title" content="Contraction Timer & Box Breathing App" />
   <meta name="twitter:description"
-    content="Distraction-free contraction timing and box breathing relaxation. Free and open source." />
+    content="Distraction-free contraction timing and box breathing relaxation. Track your labor accurately. Free and open source." />
+  <meta name="twitter:image" content="https://contraction-timing.pages.dev/og-image.jpg" />
+
+  <!-- JSON-LD Structured Data for AEO/SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Contraction Timer & Box Breathing",
+      "url": "https://contraction-timing.pages.dev",
+      "description": "A privacy-first, open-source web application for tracking labor contractions with a built-in 4-box breathing visualizer to calm the nervous system.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Murdawk Media",
+        "url": "https://www.murdawkmedia.com"
+      },
+      "featureList": [
+        "High-fidelity contraction timer",
+        "Automated 5-1-1 Rule tracking",
+        "4-box breathing visualizer",
+        "Local browser storage (Privacy-first)"
+      ]
+    }
+  </script>
 
   <!-- App Icons & PWA -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -135,7 +175,8 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       color: var(--muted);
-      margin-top: -14px;
+      margin-top: 8px;
+      text-align: center;
     }
 
     /* ── Big button ── */
