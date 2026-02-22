@@ -71,6 +71,8 @@
     rel="stylesheet" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#0d0f14" />
   <style>
     *,
     *::before,
@@ -106,6 +108,62 @@
       padding: 24px 12px 60px;
       background-image:
         radial-gradient(ellipse 70% 50% at 50% 0%, rgba(124, 106, 247, .18) 0%, transparent 70%);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient floating orbs */
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(80px);
+      opacity: 0.4;
+    }
+
+    body::before {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(124, 106, 247, 0.3), transparent 70%);
+      top: -100px;
+      right: -100px;
+      animation: float-orb 12s ease-in-out infinite alternate;
+    }
+
+    body::after {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(244, 114, 182, 0.2), transparent 70%);
+      bottom: -50px;
+      left: -80px;
+      animation: float-orb 15s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes float-orb {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(30px, -40px) scale(1.1);
+      }
+
+      100% {
+        transform: translate(-20px, 20px) scale(0.95);
+      }
+    }
+
+    /* Ensure content is above orbs */
+    main {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
     }
 
     h1 {
@@ -136,15 +194,19 @@
     .panel {
       width: 100%;
       max-width: 640px;
-      background: var(--surface);
-      border: 1px solid var(--border);
+      background: rgba(22, 26, 36, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(124, 106, 247, 0.15);
       border-radius: var(--radius);
-      padding: 28px 20px;
+      padding: 32px 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 24px;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, .5);
+      box-shadow:
+        0 24px 80px rgba(0, 0, 0, .4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
     }
 
     @media (max-width: 480px) {
@@ -168,6 +230,18 @@
 
     .live-clock.active {
       color: var(--danger);
+      text-shadow: 0 0 30px rgba(244, 114, 182, 0.5), 0 0 60px rgba(244, 114, 182, 0.2);
+      animation: glow-pulse 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow-pulse {
+      from {
+        text-shadow: 0 0 20px rgba(244, 114, 182, 0.4);
+      }
+
+      to {
+        text-shadow: 0 0 40px rgba(244, 114, 182, 0.6), 0 0 80px rgba(244, 114, 182, 0.2);
+      }
     }
 
     .clock-label {
@@ -259,11 +333,19 @@
     }
 
     .stat {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px 12px;
+      background: linear-gradient(145deg, rgba(30, 36, 54, 0.8), rgba(22, 26, 36, 0.6));
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(124, 106, 247, 0.12);
+      border-radius: 14px;
+      padding: 16px 12px;
       text-align: center;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+
+    .stat:hover {
+      border-color: rgba(124, 106, 247, 0.3);
+      transform: translateY(-2px);
     }
 
     .stat-value {
@@ -359,6 +441,26 @@
       color: var(--danger);
     }
 
+    .btn-reset-all {
+      background: none;
+      border: 1px solid rgba(244, 114, 182, 0.3);
+      color: var(--danger);
+      font-size: .75rem;
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all .2s;
+      margin-top: 16px;
+      opacity: 0.7;
+    }
+
+    .btn-reset-all:hover {
+      border-color: var(--danger);
+      background: rgba(244, 114, 182, 0.08);
+      opacity: 1;
+    }
+
     .history-list {
       width: 100%;
       max-width: 640px;
@@ -377,15 +479,22 @@
     }
 
     .entry {
-      background: var(--card);
-      border: 1px solid var(--border);
+      background: linear-gradient(145deg, rgba(30, 36, 54, 0.6), rgba(22, 26, 36, 0.4));
+      border: 1px solid rgba(42, 48, 80, 0.5);
+      border-left: 3px solid var(--accent);
       border-radius: 12px;
-      padding: 12px 14px;
+      padding: 14px 16px;
       display: grid;
       grid-template-columns: 28px 1fr auto auto;
       gap: 0 10px;
       align-items: center;
       animation: slide-in .25s ease;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .entry:hover {
+      border-color: rgba(124, 106, 247, 0.4);
+      transform: translateX(4px);
     }
 
     @media (max-width: 420px) {
@@ -483,8 +592,12 @@
       color: var(--muted);
       font-size: .72rem;
       text-align: center;
-      opacity: .45;
+      opacity: .55;
       line-height: 1.8;
+      padding-top: 24px;
+      border-top: 1px solid rgba(42, 48, 80, 0.4);
+      width: 100%;
+      max-width: 640px;
     }
 
     footer a {
@@ -492,6 +605,10 @@
       text-decoration: none;
       border-bottom: 1px solid rgba(136, 146, 176, .25);
       transition: opacity .2s;
+    }
+
+    footer a:hover {
+      opacity: .8;
     }
 
     /* ── Breathing Modal ── */
@@ -509,6 +626,7 @@
       gap: 8px;
       margin-bottom: 24px;
       transition: all 0.2s;
+      font-family: inherit;
     }
 
     .btn-breathe:hover {
@@ -652,6 +770,7 @@
       letter-spacing: 1px;
       transition: transform 0.2s, background 0.2s;
       width: 100%;
+      font-family: inherit;
     }
 
     .btn-breathe-start:hover {
@@ -663,103 +782,111 @@
 
 <body>
 
-  <h1>Contraction Timer</h1>
-  <p class="subtitle">Track duration & frequency of contractions</p>
+  <main>
 
-  <button class="btn-breathe" onclick="openBreathingModal()">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-    </svg>
-    Box Breathing
-  </button>
+    <h1>Contraction Timer</h1>
+    <p class="subtitle">Track duration & frequency of contractions</p>
 
-  <div class="panel">
-    <!-- live duration clock -->
-    <div>
-      <div class="live-clock" id="liveClock">00:00</div>
-      <div class="clock-label" id="clockLabel">Waiting to start</div>
-    </div>
-
-    <!-- big button -->
-    <button class="btn-main" id="mainBtn" onclick="toggleContraction()">
-      START
+    <button class="btn-breathe" onclick="openBreathingModal()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3a9 9 0 0 1 9 9c0 3-1.5 5.5-4 7.5L12 21l-5-1.5C4.5 17.5 3 15 3 12a9 9 0 0 1 9-9z" />
+      </svg>
+      Box Breathing
     </button>
 
-    <!-- stats row -->
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-value" id="statCount">0</div>
-        <div class="stat-label">Contractions</div>
+    <div class="panel">
+      <!-- live duration clock -->
+      <div>
+        <div class="live-clock" id="liveClock">00:00</div>
+        <div class="clock-label" id="clockLabel">Waiting to start</div>
       </div>
-      <div class="stat">
-        <div class="stat-value" id="statAvgDur">—</div>
-        <div class="stat-label">Avg Duration</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value" id="statAvgInt">—</div>
-        <div class="stat-label">Avg Interval</div>
-      </div>
-    </div>
 
-    <!-- 5-1-1 rule badge -->
-    <div class="rule-badge idle" id="ruleBadge">
-      📊 5-1-1 Rule: Contractions every 5 min, lasting 1 min, for 1+ hour → call your provider
-    </div>
-  </div>
-
-  <!-- history -->
-  <div class="history-header">
-    <h2>History</h2>
-    <button class="btn-clear" onclick="clearHistory()">Clear All</button>
-  </div>
-  <div class="history-list" id="historyList">
-    <div class="history-empty" id="emptyMsg">No contractions recorded yet. Press START when one begins.</div>
-  </div>
-
-  <!-- notes -->
-  <div class="notes-wrap" style="margin-top:20px;">
-    <label>Notes</label>
-    <textarea id="notes" placeholder="Record symptoms, water breaking, hospital bag location, etc…"
-      oninput="saveNotes()"></textarea>
-  </div>
-
-  <!-- Breathing Modal -->
-  <div class="modal-overlay" id="breatheModal">
-    <div class="breathe-panel">
-      <button class="btn-close" onclick="closeBreathingModal()">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
+      <!-- big button -->
+      <button class="btn-main" id="mainBtn" onclick="toggleContraction()">
+        START
       </button>
 
-      <div class="breathe-title">Box Breathing</div>
-      <div class="breathe-desc">Calm your nervous system using the 4-box method.</div>
-
-      <div class="breathe-box-wrap">
-        <div class="breathe-box" id="breatheBox"></div>
-        <div class="breathe-text" id="breatheText">READY</div>
+      <!-- stats row -->
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value" id="statCount">0</div>
+          <div class="stat-label">Contractions</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="statAvgDur">—</div>
+          <div class="stat-label">Avg Duration</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="statAvgInt">—</div>
+          <div class="stat-label">Avg Interval</div>
+        </div>
       </div>
 
-      <button class="btn-breathe-start" id="btnBreatheToggle" onclick="toggleBreathing()">START</button>
+      <!-- 5-1-1 rule badge -->
+      <div class="rule-badge idle" id="ruleBadge">
+        📊 5-1-1 Rule: Contractions every 5 min, lasting 1 min, for 1+ hour → call your provider
+      </div>
     </div>
-  </div>
 
-  <footer>
-    <p>Data saved to your browser · Refresh-safe · No account needed</p>
-    <p style="margin-top: 8px;">
-      Created by <a href="https://www.murdawkmedia.com" target="_blank" rel="noopener">Murdawk Media</a>. <br />
-      Need web design or other services? <a href="https://www.murdawkmedia.com" target="_blank" rel="noopener">Contact
-        us</a>.
-    </p>
-    <p style="margin-top: 8px;">
-      This app is <a href="https://github.com/murdawkmedia/contraction-timing" target="_blank" rel="noopener">fully open
-        source</a>.<br />
-      Includes a 4-box breathing method for relaxation.
-    </p>
-  </footer>
+    <!-- history -->
+    <div class="history-header">
+      <h2>History</h2>
+      <button class="btn-clear" onclick="clearHistory()">Clear All</button>
+    </div>
+    <div class="history-list" id="historyList">
+      <div class="history-empty" id="emptyMsg">No contractions recorded yet. Press START when one begins.</div>
+    </div>
+
+    <!-- notes -->
+    <div class="notes-wrap" style="margin-top:20px;">
+      <label>Notes</label>
+      <textarea id="notes" placeholder="Record symptoms, water breaking, hospital bag location, etc…"
+        oninput="saveNotes()"></textarea>
+    </div>
+
+    <!-- Reset All Data -->
+    <button class="btn-reset-all" onclick="resetAllData()">🗑 Reset All Session Data</button>
+
+    <!-- Breathing Modal -->
+    <div class="modal-overlay" id="breatheModal">
+      <div class="breathe-panel">
+        <button class="btn-close" onclick="closeBreathingModal()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="breathe-title">Box Breathing</div>
+        <div class="breathe-desc">Calm your nervous system using the 4-box method.</div>
+
+        <div class="breathe-box-wrap">
+          <div class="breathe-box" id="breatheBox"></div>
+          <div class="breathe-text" id="breatheText">READY</div>
+        </div>
+
+        <button class="btn-breathe-start" id="btnBreatheToggle" onclick="toggleBreathing()">START</button>
+      </div>
+    </div>
+
+    <footer>
+      <p>Data saved to your browser · Refresh-safe · No account needed</p>
+      <p style="margin-top: 8px;">
+        Created by <a href="https://www.murdawkmedia.com" target="_blank" rel="noopener">Murdawk Media</a>. <br />
+        Need web design or other services? <a href="https://www.murdawkmedia.com" target="_blank" rel="noopener">Contact
+          us</a>.
+      </p>
+      <p style="margin-top: 8px;">
+        This app is <a href="https://github.com/murdawkmedia/contraction-timing" target="_blank" rel="noopener">fully
+          open
+          source</a>.<br />
+        Includes a 4-box breathing method for relaxation.
+      </p>
+    </footer>
+
+  </main>
 
   <script>
     // ── State ──────────────────────────────────────────────────────────────────
@@ -851,6 +978,16 @@
 
     function saveNotes() {
       localStorage.setItem('contractionNotes', document.getElementById('notes').value);
+    }
+
+    function resetAllData() {
+      if (confirm('This will clear ALL data: contractions, notes, everything. Continue?')) {
+        contractions = [];
+        localStorage.removeItem('contractions');
+        localStorage.removeItem('contractionNotes');
+        document.getElementById('notes').value = '';
+        render();
+      }
     }
 
     // ── Rendering ────────────────────────────────────────────────────────────────
@@ -1004,6 +1141,17 @@
       if (e.code === 'Space' && e.target.tagName !== 'TEXTAREA') {
         e.preventDefault();
         toggleContraction();
+      }
+      // Escape key closes breathing modal
+      if (e.code === 'Escape' && breatheModal.classList.contains('show')) {
+        closeBreathingModal();
+      }
+    });
+
+    // Click outside modal to close
+    breatheModal.addEventListener('click', (e) => {
+      if (e.target === breatheModal) {
+        closeBreathingModal();
       }
     });
   </script>
