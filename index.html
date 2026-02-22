@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contraction Timer & Box Breathing - Open Source Tracker</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="A simple, distraction-free contraction timer and box breathing app. Track frequency, duration, and the 5-1-1 rule. Open source and privacy-focused." />
+  <meta name="keywords"
+    content="contraction timer, pregnancy, labor, 5-1-1 rule, box breathing, 4-box method, free, open source, Murdawk Media" />
+  <meta name="author" content="Murdawk Media" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contraction Timer & Box Breathing" />
+  <meta property="og:description"
+    content="Distraction-free contraction timing and box breathing relaxation. Free and open source." />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Contraction Timer & Box Breathing" />
+  <meta name="twitter:description"
+    content="Distraction-free contraction timing and box breathing relaxation. Free and open source." />
+
+  <!-- App Icons & PWA -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0d0f14;
+      --surface: #161a24;
+      --card: #1e2436;
+      --border: #2a3050;
+      --accent: #7c6af7;
+      --accent2: #a78bfa;
+      --danger: #f472b6;
+      --green: #34d399;
+      --yellow: #fbbf24;
+      --text: #e8eaf6;
+      --muted: #8892b0;
+      --radius: 16px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 12px 60px;
+      background-image:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(124, 106, 247, .18) 0%, transparent 70%);
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #c4b5fd, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: .9rem;
+      letter-spacing: .3px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 480px) {
+      .subtitle {
+        margin-bottom: 18px;
+      }
+    }
+
+    /* ── Main panel ── */
+    .panel {
+      width: 100%;
+      max-width: 640px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .5);
+    }
+
+    @media (max-width: 480px) {
+      .panel {
+        padding: 18px 12px;
+        gap: 18px;
+        border-radius: 12px;
+      }
+    }
+
+    /* ── Live clock ── */
+    .live-clock {
+      font-size: clamp(3rem, 12vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: 4px;
+      font-variant-numeric: tabular-nums;
+      color: var(--text);
+      transition: color .3s;
+      line-height: 1;
+    }
+
+    .live-clock.active {
+      color: var(--danger);
+    }
+
+    .clock-label {
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-top: -14px;
+    }
+
+    /* ── Big button ── */
+    .btn-main {
+      position: relative;
+      width: clamp(150px, 42vw, 200px);
+      height: clamp(150px, 42vw, 200px);
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: clamp(.9rem, 3.5vw, 1.1rem);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: transform .15s, box-shadow .3s;
+      outline: none;
+      touch-action: manipulation;
+      background: linear-gradient(145deg, #7c6af7, #6056d4);
+      color: #fff;
+      box-shadow:
+        0 0 0 12px rgba(124, 106, 247, .12),
+        0 0 0 24px rgba(124, 106, 247, .06),
+        0 16px 48px rgba(124, 106, 247, .4);
+    }
+
+    .btn-main.active {
+      background: linear-gradient(145deg, #f472b6, #db2777);
+      box-shadow:
+        0 0 0 12px rgba(244, 114, 182, .13),
+        0 0 0 24px rgba(244, 114, 182, .07),
+        0 16px 48px rgba(244, 114, 182, .45);
+    }
+
+    .btn-main:hover {
+      transform: scale(1.04);
+    }
+
+    .btn-main:active {
+      transform: scale(0.97);
+    }
+
+    /* pulse ring */
+    .btn-main.active::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 3px solid rgba(244, 114, 182, .6);
+      animation: pulse-ring 1.4s ease-out infinite;
+    }
+
+    @keyframes pulse-ring {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    /* ── Stat row ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 100%;
+    }
+
+    @media (max-width: 360px) {
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stats .stat:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: clamp(1.1rem, 4vw, 1.5rem);
+      font-weight: 700;
+      color: var(--accent2);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stat-label {
+      font-size: .67rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ── 5-1-1 alert ── */
+    .rule-badge {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 10px;
+      font-size: clamp(.72rem, 2.5vw, .85rem);
+      font-weight: 600;
+      text-align: center;
+      transition: all .4s;
+      border: 1px solid transparent;
+      line-height: 1.4;
+    }
+
+    .rule-badge.idle {
+      background: rgba(42, 48, 80, .4);
+      color: var(--muted);
+      border-color: var(--border);
+    }
+
+    .rule-badge.watching {
+      background: rgba(251, 191, 36, .08);
+      color: var(--yellow);
+      border-color: rgba(251, 191, 36, .3);
+    }
+
+    .rule-badge.call-now {
+      background: rgba(244, 114, 182, .12);
+      color: var(--danger);
+      border-color: rgba(244, 114, 182, .4);
+      animation: flash .8s ease-in-out infinite alternate;
+    }
+
+    @keyframes flash {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: .55;
+      }
+    }
+
+    /* ── History ── */
+    .history-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 640px;
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+
+    .history-header h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .btn-clear {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .75rem;
+      padding: 5px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all .2s;
+    }
+
+    .btn-clear:hover {
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+
+    .history-list {
+      width: 100%;
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .history-empty {
+      text-align: center;
+      color: var(--muted);
+      font-size: .85rem;
+      padding: 28px;
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+    }
+
+    .entry {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: grid;
+      grid-template-columns: 28px 1fr auto auto;
+      gap: 0 10px;
+      align-items: center;
+      animation: slide-in .25s ease;
+    }
+
+    @media (max-width: 420px) {
+      .entry {
+        grid-template-columns: 24px 1fr auto;
+      }
+
+      .entry-time {
+        display: none;
+      }
+    }
+
+    @keyframes slide-in {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .entry-num {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .entry-time {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .entry-duration {
+      font-size: 1rem;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      color: var(--text);
+    }
+
+    .entry-interval {
+      font-size: .8rem;
+      font-variant-numeric: tabular-nums;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: rgba(124, 106, 247, .13);
+      color: var(--accent2);
+      white-space: nowrap;
+    }
+
+    .entry-interval.close {
+      background: rgba(244, 114, 182, .13);
+      color: var(--danger);
+    }
+
+    /* ── Notes ── */
+    .notes-wrap {
+      width: 100%;
+      max-width: 640px;
+      margin-top: 12px;
+    }
+
+    .notes-wrap textarea {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: .85rem;
+      padding: 14px 16px;
+      resize: vertical;
+      min-height: 80px;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .notes-wrap textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .notes-wrap label {
+      display: block;
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    footer {
+      margin-top: 40px;
+      color: var(--muted);
+      font-size: .72rem;
+      text-align: center;
+      opacity: .45;
+      line-height: 1.8;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(136, 146, 176, .25);
+      transition: opacity .2s;
+    }
+
+    /* ── Breathing Modal ── */
+    .btn-breathe {
+      background: rgba(124, 106, 247, 0.15);
+      border: 1px solid rgba(124, 106, 247, 0.4);
+      color: var(--accent2);
+      padding: 10px 20px;
+      border-radius: 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      transition: all 0.2s;
+    }
+
+    .btn-breathe:hover {
+      background: rgba(124, 106, 247, 0.25);
+      border-color: var(--accent);
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 15, 20, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .breathe-panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 30px;
+      width: 90%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .5);
+    }
+
+    .modal-overlay.show .breathe-panel {
+      transform: translateY(0);
+    }
+
+    .btn-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .btn-close:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text);
+    }
+
+    .breathe-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      text-align: center;
+    }
+
+    .breathe-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+      max-width: 250px;
+      margin-top: -24px;
+    }
+
+    /* The breathing box visualization */
+    .breathe-box-wrap {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .breathe-box {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, rgba(124, 106, 247, 0.2), rgba(167, 139, 250, 0.2));
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      transition: all 4s linear;
+      /* Smooth hardware acceleration over 4s */
+    }
+
+    .breathe-box.inhale {
+      transform: scale(2);
+      border-color: var(--accent2);
+      background: linear-gradient(135deg, rgba(124, 106, 247, 0.4), rgba(167, 139, 250, 0.4));
+    }
+
+    .breathe-box.hold {
+      /* Maintains scale from the previous class (inhale or exhale) */
+      opacity: 0.9;
+    }
+
+    .breathe-box.exhale {
+      transform: scale(1);
+      border-color: var(--accent);
+      background: linear-gradient(135deg, rgba(124, 106, 247, 0.2), rgba(167, 139, 250, 0.2));
+    }
+
+    .breathe-text {
+      position: absolute;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
+
+    .btn-breathe-start {
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      padding: 12px 32px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: transform 0.2s, background 0.2s;
+      width: 100%;
+    }
+
+    .btn-breathe-start:hover {
+      transform: scale(1.05);
+      background: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Contraction Timer</h1>
+  <p class="subtitle">Track duration & frequency of contractions</p>
+
+  <button class="btn-breathe" onclick="openBreathingModal()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+    </svg>
+    Box Breathing
+  </button>
+
+  <div class="panel">
+    <!-- live duration clock -->
+    <div>
+      <div class="live-clock" id="liveClock">00:00</div>
+      <div class="clock-label" id="clockLabel">Waiting to start</div>
+    </div>
+
+    <!-- big button -->
+    <button class="btn-main" id="mainBtn" onclick="toggleContraction()">
+      START
+    </button>
+
+    <!-- stats row -->
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value" id="statCount">0</div>
+        <div class="stat-label">Contractions</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="statAvgDur">—</div>
+        <div class="stat-label">Avg Duration</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="statAvgInt">—</div>
+        <div class="stat-label">Avg Interval</div>
+      </div>
+    </div>
+
+    <!-- 5-1-1 rule badge -->
+    <div class="rule-badge idle" id="ruleBadge">
+      📊 5-1-1 Rule: Contractions every 5 min, lasting 1 min, for 1+ hour → call your provider
+    </div>
+  </div>
+
+  <!-- history -->
+  <div class="history-header">
+    <h2>History</h2>
+    <button class="btn-clear" onclick="clearHistory()">Clear All</button>
+  </div>
+  <div class="history-list" id="historyList">
+    <div class="history-empty" id="emptyMsg">No contractions recorded yet. Press START when one begins.</div>
+  </div>
+
+  <!-- notes -->
+  <div class="notes-wrap" style="margin-top:20px;">
+    <label>Notes</label>
+    <textarea id="notes" placeholder="Record symptoms, water breaking, hospital bag location, etc…"
+      oninput="saveNotes()"></textarea>
+  </div>
+
+  <!-- Breathing Modal -->
+  <div class="modal-overlay" id="breatheModal">
+    <div class="breathe-panel">
+      <button class="btn-close" onclick="closeBreathingModal()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="breathe-title">Box Breathing</div>
+      <div class="breathe-desc">Calm your nervous system using the 4-box method.</div>
+
+      <div class="breathe-box-wrap">
+        <div class="breathe-box" id="breatheBox"></div>
+        <div class="breathe-text" id="breatheText">READY</div>
+      </div>
+
+      <button class="btn-breathe-start" id="btnBreatheToggle" onclick="toggleBreathing()">START</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>Data saved to your browser · Refresh-safe · No account needed</p>
+    <p style="margin-top: 8px;">
+      Created by <a href="https://www.murdawkmedia.com" target="_blank" rel="noopener">Murdawk Media</a>. <br />
+      Need web design or other services? <a href="https://www.murdawkmedia.com" target="_blank" rel="noopener">Contact
+        us</a>.
+    </p>
+    <p style="margin-top: 8px;">
+      This app is <a href="https://github.com/murdawkmedia/contraction-timing" target="_blank" rel="noopener">fully open
+        source</a>.<br />
+      Includes a 4-box breathing method for relaxation.
+    </p>
+  </footer>
+
+  <script>
+    // ── State ──────────────────────────────────────────────────────────────────
+    let contractions = JSON.parse(localStorage.getItem('contractions') || '[]');
+    let active = false;
+    let startTime = null;
+    let animationFrameId = null;
+
+    // ── DOM refs ────────────────────────────────────────────────────────────────
+    const liveClock = document.getElementById('liveClock');
+    const clockLabel = document.getElementById('clockLabel');
+    const mainBtn = document.getElementById('mainBtn');
+    const statCount = document.getElementById('statCount');
+    const statAvgDur = document.getElementById('statAvgDur');
+    const statAvgInt = document.getElementById('statAvgInt');
+    const ruleBadge = document.getElementById('ruleBadge');
+    const historyList = document.getElementById('historyList');
+    const emptyMsg = document.getElementById('emptyMsg');
+
+    // restore notes
+    document.getElementById('notes').value = localStorage.getItem('contractionNotes') || '';
+
+    // ── Helpers ─────────────────────────────────────────────────────────────────
+    function pad(n) { return String(Math.floor(n)).padStart(2, '0'); }
+
+    function fmtDuration(ms) {
+      const s = Math.floor(ms / 1000);
+      const m = Math.floor(s / 60);
+      return m ? `${m}m ${pad(s % 60)}s` : `${s}s`;
+    }
+
+    function fmtClock(ms) {
+      const s = Math.floor(ms / 1000);
+      return `${pad(Math.floor(s / 60))}:${pad(s % 60)}`;
+    }
+
+    function fmtTime(ts) {
+      return new Date(ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+
+    function updateClock() {
+      if (active) {
+        liveClock.textContent = fmtClock(Date.now() - startTime);
+        animationFrameId = requestAnimationFrame(updateClock);
+      }
+    }
+
+    // ── Core logic ───────────────────────────────────────────────────────────────
+    function toggleContraction() {
+      if (!active) {
+        // START
+        active = true;
+        startTime = Date.now();
+        mainBtn.textContent = 'STOP';
+        mainBtn.classList.add('active');
+        liveClock.classList.add('active');
+        clockLabel.textContent = 'Contraction in progress…';
+
+        updateClock();
+      } else {
+        // STOP
+        const duration = Date.now() - startTime;
+        cancelAnimationFrame(animationFrameId);
+        active = false;
+
+        // record
+        const entry = { start: startTime, duration, end: Date.now() };
+        contractions.unshift(entry);   // newest first
+        localStorage.setItem('contractions', JSON.stringify(contractions));
+
+        // reset UI
+        mainBtn.textContent = 'START';
+        mainBtn.classList.remove('active');
+        liveClock.classList.remove('active');
+        liveClock.textContent = '00:00';
+        clockLabel.textContent = 'Ready — press START for next contraction';
+
+        render();
+      }
+    }
+
+    function clearHistory() {
+      if (confirm('Clear all contraction history?')) {
+        contractions = [];
+        localStorage.removeItem('contractions');
+        render();
+      }
+    }
+
+    function saveNotes() {
+      localStorage.setItem('contractionNotes', document.getElementById('notes').value);
+    }
+
+    // ── Rendering ────────────────────────────────────────────────────────────────
+    function render() {
+      const n = contractions.length;
+      statCount.textContent = n;
+
+      if (n === 0) {
+        statAvgDur.textContent = '—';
+        statAvgInt.textContent = '—';
+        historyList.innerHTML = '';
+        historyList.appendChild(emptyMsg);
+        emptyMsg.style.display = '';
+        setRuleBadge('idle');
+        return;
+      }
+
+      // averages
+      const avgDur = contractions.reduce((a, c) => a + c.duration, 0) / n;
+      statAvgDur.textContent = fmtDuration(avgDur);
+
+      const intervals = [];
+      for (let i = 0; i < contractions.length - 1; i++) {
+        // contractions[0] is newest; interval = start of i+1 minus start of i (reversed order)
+        intervals.push(contractions[i].start - contractions[i + 1].start);
+      }
+      const avgInt = intervals.length ? intervals.reduce((a, b) => a + b, 0) / intervals.length : null;
+      statAvgInt.textContent = avgInt ? fmtDuration(avgInt) : '—';
+
+      // 5-1-1 check (over last 6 contractions in last 60 min)
+      const recent = contractions.filter(c => Date.now() - c.start < 60 * 60 * 1000);
+      const recentIntervals = [];
+      for (let i = 0; i < recent.length - 1; i++) {
+        recentIntervals.push(recent[i].start - recent[i + 1].start);
+      }
+      const avgRecentInt = recentIntervals.length ? recentIntervals.reduce((a, b) => a + b, 0) / recentIntervals.length : Infinity;
+      const avgRecentDur = recent.length ? recent.reduce((a, c) => a + c.duration, 0) / recent.length : 0;
+
+      if (recent.length >= 6 && avgRecentInt <= 5 * 60 * 1000 && avgRecentDur >= 45 * 1000) {
+        setRuleBadge('call-now');
+      } else if (recent.length >= 3 && avgRecentInt <= 8 * 60 * 1000) {
+        setRuleBadge('watching');
+      } else {
+        setRuleBadge('idle');
+      }
+
+      // build history rows
+      historyList.innerHTML = '';
+      contractions.forEach((c, i) => {
+        const num = n - i; // highest number = most recent
+        const prev = contractions[i + 1];
+        const interval = prev ? fmtDuration(c.start - prev.start) : null;
+        const intervalMs = prev ? (c.start - prev.start) : Infinity;
+        const isClose = intervalMs < 5 * 60 * 1000;
+
+        const row = document.createElement('div');
+        row.className = 'entry';
+        row.innerHTML = `
+      <span class="entry-num">#${num}</span>
+      <span class="entry-time">${fmtTime(c.start)}</span>
+      <span class="entry-duration">${fmtDuration(c.duration)}</span>
+      <span class="entry-interval ${isClose && interval ? 'close' : ''}">${interval ? `↔ ${interval}` : 'First'}</span>
+    `;
+        historyList.appendChild(row);
+      });
+    }
+
+    function setRuleBadge(state) {
+      ruleBadge.className = 'rule-badge ' + state;
+      if (state === 'idle') {
+        ruleBadge.textContent = '📊 5-1-1 Rule: Every 5 min · Last 1 min · For 1 hour → call your provider';
+      } else if (state === 'watching') {
+        ruleBadge.textContent = '⚠️ Contractions getting closer — keep timing, prepare to call';
+      } else {
+        ruleBadge.textContent = '🚨 5-1-1 Rule met — call your provider or head to the hospital!';
+      }
+    }
+
+    // ── Box Breathing Logic ──────────────────────────────────────────────────────
+    const breatheModal = document.getElementById('breatheModal');
+    const breatheBox = document.getElementById('breatheBox');
+    const breatheText = document.getElementById('breatheText');
+    const btnBreatheToggle = document.getElementById('btnBreatheToggle');
+
+    let breatheInterval = null;
+    let breathePhase = 0; // 0=inhale, 1=hold, 2=exhale, 3=hold
+    let isBreathing = false;
+
+    function openBreathingModal() {
+      breatheModal.classList.add('show');
+    }
+
+    function closeBreathingModal() {
+      breatheModal.classList.remove('show');
+      if (isBreathing) {
+        stopBreathing();
+      }
+    }
+
+    function toggleBreathing() {
+      if (isBreathing) stopBreathing();
+      else startBreathing();
+    }
+
+    function startBreathing() {
+      isBreathing = true;
+      btnBreatheToggle.textContent = 'STOP';
+      breathePhase = 0;
+      runBreathingPhase();
+      breatheInterval = setInterval(runBreathingPhase, 4000); // 4 seconds per phase
+    }
+
+    function stopBreathing() {
+      isBreathing = false;
+      clearInterval(breatheInterval);
+      btnBreatheToggle.textContent = 'START';
+      breatheText.textContent = 'READY';
+      // Rest box state to neutral without jumping (the css transition handles the duration, but here we snap back smoothly or immediately)
+      // Removing all phase classes restores it to original 100x100 box
+      breatheBox.className = 'breathe-box';
+      breatheBox.style.transition = 'all 0.5s ease-out'; // quick return
+      setTimeout(() => { breatheBox.style.transition = 'all 4s linear'; }, 550);
+    }
+
+    function runBreathingPhase() {
+      // 4-box phase cycle
+      if (breathePhase === 0) {
+        breatheText.textContent = 'INHALE';
+        breatheBox.className = 'breathe-box inhale';
+      } else if (breathePhase === 1) {
+        breatheText.textContent = 'HOLD';
+        // Keeps inhale scale, so `hold` class doesn't override scale(2)
+        breatheBox.className = 'breathe-box inhale hold';
+      } else if (breathePhase === 2) {
+        breatheText.textContent = 'EXHALE';
+        breatheBox.className = 'breathe-box exhale';
+      } else if (breathePhase === 3) {
+        breatheText.textContent = 'HOLD';
+        // Keeps exhale scale (scale 1)
+        breatheBox.className = 'breathe-box exhale hold';
+      }
+
+      breathePhase = (breathePhase + 1) % 4;
+    }
+
+    // ── Init ─────────────────────────────────────────────────────────────────────
+    render();
+
+    // keyboard shortcut: Space bar
+    window.addEventListener('keydown', e => {
+      if (e.code === 'Space' && e.target.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        toggleContraction();
+      }
+    });
+  </script>
+</body>
+
+</html>
