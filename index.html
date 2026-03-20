@@ -631,13 +631,33 @@
       border-color: var(--accent);
     }
 
-    .notes-wrap label {
-      display: block;
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .notes-header label {
       font-size: .7rem;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--muted);
-      margin-bottom: 8px;
+    }
+
+    .notes-saved {
+      font-size: .7rem;
+      color: var(--green);
+      letter-spacing: .5px;
+      opacity: 0;
+      transition: opacity .3s;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .notes-saved.visible {
+      opacity: 1;
     }
 
     footer {
@@ -645,12 +665,26 @@
       color: var(--muted);
       font-size: .72rem;
       text-align: center;
-      opacity: .55;
+      opacity: .72;
       line-height: 1.8;
       padding-top: 24px;
       border-top: 1px solid rgba(42, 48, 80, 0.4);
       width: 100%;
       max-width: 640px;
+    }
+
+    .storage-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(52, 211, 153, 0.08);
+      border: 1px solid rgba(52, 211, 153, 0.2);
+      color: var(--green);
+      font-size: .68rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: .5px;
+      margin-bottom: 10px;
     }
 
     footer a {
@@ -893,13 +927,16 @@
 
     <!-- notes -->
     <div class="notes-wrap" style="margin-top:20px;">
-      <label>Notes</label>
+      <div class="notes-header">
+        <label for="notes">Notes</label>
+        <span class="notes-saved" id="notesSaved">✓ Saved <span id="notesSavedTime"></span></span>
+      </div>
       <textarea id="notes" placeholder="Record symptoms, water breaking, hospital bag location, etc…"
         oninput="saveNotes()"></textarea>
     </div>
 
     <!-- Reset All Data -->
-    <button class="btn-reset-all" onclick="resetAllData()">🗑 Reset All Session Data</button>
+    <button class="btn-reset-all" onclick="resetAllData()">🗑 Clear All Data</button>
 
     <!-- Breathing Modal -->
     <div class="modal-overlay" id="breatheModal">
@@ -925,7 +962,8 @@
     </div>
 
     <footer>
-      <p>Data saved to your browser · Refresh-safe · No account needed</p>
+      <p><span class="storage-badge">🔒 Saved to your browser — never leaves your device</span></p>
+      <p>Refresh-safe · No account needed · No data sent anywhere</p>
       <p style="margin-top: 8px;">
         Built with ❤️ by <a href="https://www.murdawkmedia.com" target="_blank" rel="noopener noreferrer">Murdawk
           Media</a> —
@@ -1029,8 +1067,19 @@
       }
     }
 
+    let notesSaveTimer = null;
+    const notesSaved = document.getElementById('notesSaved');
+    const notesSavedTime = document.getElementById('notesSavedTime');
+
     function saveNotes() {
       localStorage.setItem('contractionNotes', document.getElementById('notes').value);
+      // Show "✓ Saved" indicator with current time
+      const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      notesSavedTime.textContent = '· ' + now;
+      notesSaved.classList.add('visible');
+      // Keep it visible; fade out after 3s of inactivity
+      clearTimeout(notesSaveTimer);
+      notesSaveTimer = setTimeout(() => notesSaved.classList.remove('visible'), 3000);
     }
 
     function resetAllData() {
