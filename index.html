@@ -4,13 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contraction Timer & Box Breathing - Open Source Tracker</title>
+  <title>Contraction Timer & Provider Report - Open Source Labor Tracker</title>
 
-  <!-- SEO Meta Tags -->
   <meta name="description"
-    content="A beautifully designed, distraction-free contraction timer with an integrated 4-box breathing visualizer. Track contraction frequency, duration, and the 5-1-1 rule. 100% Free, Privacy-focused, and Open Source." />
+    content="A privacy-first contraction timer with provider-ready labor statistics, trend tracking, event notes, CSV export, and print reports. Free, open source, and stored locally in your browser." />
   <meta name="keywords"
-    content="contraction timer, pregnancy app, labor tracking, 5-1-1 rule, box breathing method, 4-box breathing, free contraction app, privacy-first health app, open source, Murdawk Media" />
+    content="contraction timer, labor tracker, contraction statistics, midwife report, doula app, doctor report, 5-1-1 rule, contraction CSV, printable labor report, privacy-first pregnancy app" />
   <meta name="author" content="Murdawk Media" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="language" content="English">
@@ -19,31 +18,28 @@
   <link rel="icon" type="image/x-icon" href="./favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
 
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://murdawkmedia.github.io/contraction-timing" />
-  <meta property="og:title" content="Contraction Timer & Box Breathing App" />
+  <meta property="og:title" content="Contraction Timer & Provider Report" />
   <meta property="og:description"
-    content="Distraction-free contraction timing and box breathing relaxation. Track your labor accurately. Free and open source." />
+    content="Track contractions, intensity, labor events, and provider-ready reports without accounts or remote storage." />
   <meta property="og:site_name" content="Contraction Timer by Murdawk Media" />
   <meta property="og:image" content="https://murdawkmedia.github.io/contraction-timing/og-image.jpg" />
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://murdawkmedia.github.io/contraction-timing" />
-  <meta name="twitter:title" content="Contraction Timer & Box Breathing App" />
+  <meta name="twitter:title" content="Contraction Timer & Provider Report" />
   <meta name="twitter:description"
-    content="Distraction-free contraction timing and box breathing relaxation. Track your labor accurately. Free and open source." />
+    content="A private contraction timer with provider-ready statistics, events, and reports." />
   <meta name="twitter:image" content="https://murdawkmedia.github.io/contraction-timing/og-image.jpg" />
 
-  <!-- JSON-LD Structured Data: WebApplication (SEO/AEO) -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Contraction Timer & Box Breathing",
+      "name": "Contraction Timer & Provider Report",
       "url": "https://murdawkmedia.github.io/contraction-timing",
-      "description": "A privacy-first, open-source web application for tracking labor contractions with a built-in 4-box breathing visualizer to calm the nervous system.",
+      "description": "A privacy-first, open-source web application for tracking labor contractions, intensity, labor events, and provider-ready reports.",
       "applicationCategory": "HealthApplication",
       "operatingSystem": "Any",
       "browserRequirements": "Requires JavaScript. Requires HTML5.",
@@ -59,16 +55,18 @@
       },
       "featureList": [
         "High-fidelity contraction timer",
-        "Automated 5-1-1 Rule tracking",
+        "Provider-ready contraction statistics",
+        "Customizable contraction alert thresholds",
+        "Labor event timeline",
+        "CSV export and printable reports",
         "4-box breathing visualizer",
-        "Local browser storage (Privacy-first)"
+        "Local browser storage"
       ],
       "license": "https://opensource.org/licenses/MIT",
       "codeRepository": "https://github.com/murdawkmedia/contraction-timing"
     }
   </script>
 
-  <!-- JSON-LD Structured Data: FAQPage (AEO - Answer Engine Optimization) -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -79,31 +77,15 @@
           "name": "What is the 5-1-1 rule for contractions?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The 5-1-1 rule is a guideline for when to go to the hospital during labor: contractions occurring every 5 minutes, lasting at least 1 minute each, for at least 1 hour. This app automatically alerts you when this threshold is met."
+            "text": "The 5-1-1 rule is a guideline many families discuss with their care team: contractions about every 5 minutes, lasting about 1 minute, for about 1 hour. Provider instructions can vary, so this app lets you customize the timing guideline."
           }
         },
         {
           "@type": "Question",
-          "name": "How do I use a contraction timer?",
+          "name": "Can I share contraction history with a provider?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Press the START button when a contraction begins and press STOP when it ends. The app automatically calculates the duration and the interval between contractions, and tracks whether you've met the 5-1-1 rule."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is this contraction timer free?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, this contraction timer is completely free to use. It is open source, requires no account, and stores all data locally in your browser with no data sent to any server."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is box breathing and how does it help during labor?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Box breathing, also called 4-box breathing or square breathing, is a relaxation technique: inhale for 4 seconds, hold for 4 seconds, exhale for 4 seconds, hold for 4 seconds. It activates the parasympathetic nervous system to reduce stress and pain perception, making it a popular technique during labor contractions."
+            "text": "Yes. The app can copy a provider summary, download a CSV file, and open a print report that can be saved as a PDF from the browser."
           }
         },
         {
@@ -111,21 +93,21 @@
           "name": "Does the contraction timer store my data privately?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. All contraction data and notes are stored only in your browser's local storage. No information is sent to any server, no account is required, and your data is never shared with anyone."
+            "text": "Yes. Contraction data, labor events, notes, and settings are stored only in your browser's local storage. No account or server is used."
           }
         }
       ]
     }
   </script>
 
-  <!-- App Icons & PWA -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="theme-color" content="#0d0f14" />
+  <meta name="theme-color" content="#101319" />
+
   <style>
     *,
     *::before,
@@ -136,1047 +118,2198 @@
     }
 
     :root {
-      --bg: #0d0f14;
-      --surface: #161a24;
-      --card: #1e2436;
-      --border: #2a3050;
-      --accent: #7c6af7;
-      --accent2: #a78bfa;
-      --danger: #f472b6;
-      --green: #34d399;
-      --yellow: #fbbf24;
-      --text: #e8eaf6;
-      --muted: #8892b0;
-      --radius: 16px;
+      --bg: #101319;
+      --surface: #171d26;
+      --surface-2: #202735;
+      --surface-3: #273142;
+      --border: #354153;
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --text: #f4f1ea;
+      --muted: #a8b0bc;
+      --quiet: #7e8795;
+      --accent: #48c6b0;
+      --accent-strong: #16a98f;
+      --warn: #f2b84b;
+      --danger: #ef6f78;
+      --blue: #7aa9ff;
+      --ink: #101319;
+      --radius: 8px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.34);
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        linear-gradient(180deg, rgba(72, 198, 176, 0.08), transparent 320px),
+        var(--bg);
       color: var(--text);
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 24px 12px 60px;
-      background-image:
-        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(124, 106, 247, .18) 0%, transparent 70%);
-      overflow-x: hidden;
-      position: relative;
+      padding: 20px 12px 52px;
     }
 
-    /* Ambient floating orbs */
-    body::before,
-    body::after {
-      content: '';
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 0;
-      filter: blur(80px);
-      opacity: 0.4;
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
     }
 
-    body::before {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(124, 106, 247, 0.3), transparent 70%);
-      top: -100px;
-      right: -100px;
-      animation: float-orb 12s ease-in-out infinite alternate;
+    button {
+      touch-action: manipulation;
     }
 
-    body::after {
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(244, 114, 182, 0.2), transparent 70%);
-      bottom: -50px;
-      left: -80px;
-      animation: float-orb 15s ease-in-out infinite alternate-reverse;
+    a {
+      color: var(--accent);
+      text-decoration: none;
     }
 
-    @keyframes float-orb {
-      0% {
-        transform: translate(0, 0) scale(1);
-      }
-
-      50% {
-        transform: translate(30px, -40px) scale(1.1);
-      }
-
-      100% {
-        transform: translate(-20px, 20px) scale(0.95);
-      }
+    a:hover {
+      text-decoration: underline;
     }
 
-    /* Ensure content is above orbs */
     main {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .app-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: start;
+      margin: 6px 0 18px;
     }
 
     h1 {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-size: clamp(1.75rem, 6vw, 2.75rem);
+      line-height: 1.05;
       font-weight: 800;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #c4b5fd, #818cf8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 6px;
+      letter-spacing: 0;
     }
 
     .subtitle {
       color: var(--muted);
-      font-size: .9rem;
-      letter-spacing: .3px;
-      margin-bottom: 28px;
+      font-size: 0.95rem;
+      margin-top: 8px;
+      max-width: 680px;
+      line-height: 1.5;
     }
 
-    @media (max-width: 480px) {
-      .subtitle {
-        margin-bottom: 18px;
-      }
-    }
-
-    /* ── Main panel ── */
-    .panel {
-      width: 100%;
-      max-width: 640px;
-      background: rgba(22, 26, 36, 0.7);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(124, 106, 247, 0.15);
-      border-radius: var(--radius);
-      padding: 32px 24px;
-      display: flex;
-      flex-direction: column;
+    .privacy-pill {
+      display: inline-flex;
       align-items: center;
-      gap: 24px;
-      box-shadow:
-        0 24px 80px rgba(0, 0, 0, .4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
-    }
-
-    @media (max-width: 480px) {
-      .panel {
-        padding: 18px 12px;
-        gap: 18px;
-        border-radius: 12px;
-      }
-    }
-
-    /* ── Live clock ── */
-    .live-clock {
-      font-size: clamp(3rem, 12vw, 5.5rem);
+      min-height: 36px;
+      padding: 8px 12px;
+      border: 1px solid rgba(72, 198, 176, 0.3);
+      border-radius: 999px;
+      color: #9ff0df;
+      background: rgba(72, 198, 176, 0.08);
+      font-size: 0.78rem;
       font-weight: 700;
-      letter-spacing: 4px;
+      white-space: nowrap;
+    }
+
+    .panel,
+    .section {
+      border: 1px solid var(--border-soft);
+      background: rgba(23, 29, 38, 0.88);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .panel {
+      padding: clamp(18px, 4vw, 30px);
+      display: grid;
+      gap: 22px;
+    }
+
+    .timer-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .timer-readout {
+      min-width: 0;
+    }
+
+    .live-clock {
+      font-size: clamp(3.4rem, 15vw, 6.6rem);
+      line-height: 0.95;
+      font-weight: 800;
       font-variant-numeric: tabular-nums;
+      letter-spacing: 0;
       color: var(--text);
-      transition: color .3s;
-      line-height: 1;
     }
 
     .live-clock.active {
-      color: var(--danger);
-      text-shadow: 0 0 30px rgba(244, 114, 182, 0.5), 0 0 60px rgba(244, 114, 182, 0.2);
-      animation: glow-pulse 1.5s ease-in-out infinite alternate;
-    }
-
-    @keyframes glow-pulse {
-      from {
-        text-shadow: 0 0 20px rgba(244, 114, 182, 0.4);
-      }
-
-      to {
-        text-shadow: 0 0 40px rgba(244, 114, 182, 0.6), 0 0 80px rgba(244, 114, 182, 0.2);
-      }
+      color: #ffd3d6;
+      text-shadow: 0 0 30px rgba(239, 111, 120, 0.36);
     }
 
     .clock-label {
-      font-size: .75rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      margin-top: 10px;
       color: var(--muted);
-      margin-top: 8px;
-      text-align: center;
+      font-size: 0.92rem;
+      line-height: 1.4;
     }
 
-    /* ── Big button ── */
     .btn-main {
-      position: relative;
-      width: clamp(150px, 42vw, 200px);
-      height: clamp(150px, 42vw, 200px);
-      border-radius: 50%;
-      border: none;
+      width: clamp(150px, 28vw, 210px);
+      aspect-ratio: 1;
+      border: 0;
+      border-radius: 999px;
+      color: var(--ink);
+      background: linear-gradient(145deg, #9ff0df, #48c6b0);
       cursor: pointer;
-      font-size: clamp(.9rem, 3.5vw, 1.1rem);
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      transition: transform .15s, box-shadow .3s;
-      outline: none;
-      touch-action: manipulation;
-      background: linear-gradient(145deg, #7c6af7, #6056d4);
-      color: #fff;
+      font-size: clamp(1.05rem, 3vw, 1.28rem);
+      font-weight: 800;
+      letter-spacing: 0;
       box-shadow:
-        0 0 0 12px rgba(124, 106, 247, .12),
-        0 0 0 24px rgba(124, 106, 247, .06),
-        0 16px 48px rgba(124, 106, 247, .4);
+        0 0 0 10px rgba(72, 198, 176, 0.12),
+        0 0 0 22px rgba(72, 198, 176, 0.06),
+        0 18px 44px rgba(72, 198, 176, 0.22);
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
     }
 
     .btn-main.active {
-      background: linear-gradient(145deg, #f472b6, #db2777);
+      color: #fff;
+      background: linear-gradient(145deg, #ef6f78, #c94556);
       box-shadow:
-        0 0 0 12px rgba(244, 114, 182, .13),
-        0 0 0 24px rgba(244, 114, 182, .07),
-        0 16px 48px rgba(244, 114, 182, .45);
-    }
-
-    .btn-main:hover {
-      transform: scale(1.04);
+        0 0 0 10px rgba(239, 111, 120, 0.14),
+        0 0 0 22px rgba(239, 111, 120, 0.07),
+        0 18px 44px rgba(239, 111, 120, 0.28);
     }
 
     .btn-main:active {
       transform: scale(0.97);
     }
 
-    /* pulse ring */
-    .btn-main.active::before {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      border: 3px solid rgba(244, 114, 182, .6);
-      animation: pulse-ring 1.4s ease-out infinite;
-    }
-
-    @keyframes pulse-ring {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-
-      100% {
-        transform: scale(1.3);
-        opacity: 0;
-      }
-    }
-
-    /* ── Stat row ── */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .actions-row {
+      display: flex;
+      flex-wrap: wrap;
       gap: 10px;
-      width: 100%;
     }
 
-    @media (max-width: 360px) {
-      .stats {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .stats .stat:last-child {
-        grid-column: 1 / -1;
-      }
-    }
-
-    .stat {
-      background: linear-gradient(145deg, rgba(30, 36, 54, 0.8), rgba(22, 26, 36, 0.6));
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(124, 106, 247, 0.12);
-      border-radius: 14px;
-      padding: 16px 12px;
-      text-align: center;
-      transition: border-color 0.3s, transform 0.2s;
-    }
-
-    .stat:hover {
-      border-color: rgba(124, 106, 247, 0.3);
-      transform: translateY(-2px);
-    }
-
-    .stat-value {
-      font-size: clamp(1.1rem, 4vw, 1.5rem);
-      font-weight: 700;
-      color: var(--accent2);
-      font-variant-numeric: tabular-nums;
-    }
-
-    .stat-label {
-      font-size: .67rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-
-    /* ── 5-1-1 alert ── */
-    .rule-badge {
-      width: 100%;
-      padding: 11px 14px;
-      border-radius: 10px;
-      font-size: clamp(.72rem, 2.5vw, .85rem);
-      font-weight: 600;
-      text-align: center;
-      transition: all .4s;
-      border: 1px solid transparent;
-      line-height: 1.4;
-    }
-
-    .rule-badge.idle {
-      background: rgba(42, 48, 80, .4);
-      color: var(--muted);
-      border-color: var(--border);
-    }
-
-    .rule-badge.watching {
-      background: rgba(251, 191, 36, .08);
-      color: var(--yellow);
-      border-color: rgba(251, 191, 36, .3);
-    }
-
-    .rule-badge.call-now {
-      background: rgba(244, 114, 182, .12);
-      color: var(--danger);
-      border-color: rgba(244, 114, 182, .4);
-      animation: flash .8s ease-in-out infinite alternate;
-    }
-
-    @keyframes flash {
-      from {
-        opacity: 1;
-      }
-
-      to {
-        opacity: .55;
-      }
-    }
-
-    /* ── History ── */
-    .history-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      max-width: 640px;
-      margin-top: 28px;
-      margin-bottom: 12px;
-    }
-
-    .history-header h2 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-    }
-
-    .btn-clear {
-      background: none;
+    .btn,
+    .icon-btn {
+      min-height: 44px;
       border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: .75rem;
-      padding: 5px 14px;
-      border-radius: 20px;
+      border-radius: var(--radius);
+      background: var(--surface-2);
+      color: var(--text);
       cursor: pointer;
-      font-family: inherit;
-      transition: all .2s;
+      font-weight: 700;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
     }
 
-    .btn-clear:hover {
-      border-color: var(--danger);
-      color: var(--danger);
-    }
-
-    .btn-reset-all {
-      background: none;
-      border: 1px solid rgba(244, 114, 182, 0.3);
-      color: var(--danger);
-      font-size: .75rem;
-      padding: 8px 18px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-family: inherit;
-      transition: all .2s;
-      margin-top: 16px;
-      opacity: 0.7;
-    }
-
-    .btn-reset-all:hover {
-      border-color: var(--danger);
-      background: rgba(244, 114, 182, 0.08);
-      opacity: 1;
-    }
-
-    .history-list {
-      width: 100%;
-      max-width: 640px;
-      display: flex;
-      flex-direction: column;
+    .btn {
+      padding: 10px 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       gap: 8px;
     }
 
-    .history-empty {
-      text-align: center;
-      color: var(--muted);
-      font-size: .85rem;
-      padding: 28px;
-      border: 1px dashed var(--border);
-      border-radius: var(--radius);
+    .icon-btn {
+      width: 44px;
+      display: inline-grid;
+      place-items: center;
     }
 
-    .entry {
-      background: linear-gradient(145deg, rgba(30, 36, 54, 0.6), rgba(22, 26, 36, 0.4));
-      border: 1px solid rgba(42, 48, 80, 0.5);
-      border-left: 3px solid var(--accent);
-      border-radius: 12px;
-      padding: 14px 16px;
+    .btn:hover,
+    .icon-btn:hover {
+      border-color: rgba(72, 198, 176, 0.55);
+      background: var(--surface-3);
+    }
+
+    .btn:active,
+    .icon-btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--ink);
+    }
+
+    .btn.danger {
+      border-color: rgba(239, 111, 120, 0.4);
+      color: #ffb8be;
+      background: rgba(239, 111, 120, 0.08);
+    }
+
+    .btn.subtle {
+      background: transparent;
+      color: var(--muted);
+    }
+
+    .btn[disabled] {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .summary-grid,
+    .dashboard-grid {
       display: grid;
-      grid-template-columns: 28px 1fr auto auto;
-      gap: 0 10px;
-      align-items: center;
-      animation: slide-in .25s ease;
-      transition: border-color 0.2s, transform 0.15s;
+      gap: 10px;
     }
 
-    .entry:hover {
-      border-color: rgba(124, 106, 247, 0.4);
-      transform: translateX(4px);
+    .summary-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    @media (max-width: 420px) {
-      .entry {
-        grid-template-columns: 24px 1fr auto;
-      }
-
-      .entry-time {
-        display: none;
-      }
+    .dashboard-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 
-    @keyframes slide-in {
-      from {
-        opacity: 0;
-        transform: translateY(-8px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .metric {
+      min-height: 88px;
+      padding: 14px;
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius);
+      background: rgba(32, 39, 53, 0.82);
     }
 
-    .entry-num {
-      font-size: .8rem;
-      font-weight: 700;
-      color: var(--muted);
-    }
-
-    .entry-time {
-      font-size: .8rem;
-      color: var(--muted);
-    }
-
-    .entry-duration {
-      font-size: 1rem;
-      font-weight: 600;
-      font-variant-numeric: tabular-nums;
+    .metric-value {
       color: var(--text);
+      font-size: clamp(1.08rem, 3vw, 1.42rem);
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.1;
+      overflow-wrap: anywhere;
     }
 
-    .entry-interval {
-      font-size: .8rem;
+    .metric-label {
+      color: var(--muted);
+      margin-top: 7px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      line-height: 1.25;
+    }
+
+    .rule-badge {
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(32, 39, 53, 0.85);
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .rule-badge.watching {
+      color: #ffd98f;
+      background: rgba(242, 184, 75, 0.1);
+      border-color: rgba(242, 184, 75, 0.34);
+    }
+
+    .rule-badge.call-now {
+      color: #ffd5d8;
+      background: rgba(239, 111, 120, 0.13);
+      border-color: rgba(239, 111, 120, 0.45);
+    }
+
+    .quick-panel {
+      display: none;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid rgba(72, 198, 176, 0.26);
+      border-radius: var(--radius);
+      background: rgba(72, 198, 176, 0.07);
+    }
+
+    .quick-panel.show {
+      display: grid;
+    }
+
+    .quick-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .quick-duration {
+      color: var(--accent);
       font-variant-numeric: tabular-nums;
-      padding: 3px 10px;
-      border-radius: 20px;
-      background: rgba(124, 106, 247, .13);
-      color: var(--accent2);
       white-space: nowrap;
     }
 
-    .entry-interval.close {
-      background: rgba(244, 114, 182, .13);
-      color: var(--danger);
+    .intensity-buttons {
+      display: grid;
+      grid-template-columns: repeat(11, minmax(34px, 1fr));
+      gap: 6px;
     }
 
-    /* ── Notes ── */
-    .notes-wrap {
-      width: 100%;
-      max-width: 640px;
-      margin-top: 12px;
-    }
-
-    .notes-wrap textarea {
-      width: 100%;
-      background: var(--card);
+    .intensity-btn {
+      min-height: 40px;
+      border-radius: var(--radius);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      color: var(--text);
-      font-family: inherit;
-      font-size: .85rem;
-      padding: 14px 16px;
-      resize: vertical;
-      min-height: 80px;
-      outline: none;
-      transition: border-color .2s;
+      color: var(--muted);
+      background: var(--surface-2);
+      cursor: pointer;
+      font-weight: 800;
     }
 
-    .notes-wrap textarea:focus {
+    .intensity-btn.selected {
+      color: var(--ink);
+      background: var(--warn);
+      border-color: var(--warn);
+    }
+
+    label,
+    .field-label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      margin-bottom: 7px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #111722;
+      color: var(--text);
+      padding: 10px 12px;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 92px;
+      resize: vertical;
+      line-height: 1.45;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
       border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(72, 198, 176, 0.14);
+    }
+
+    .section {
+      margin-top: 18px;
+      padding: clamp(16px, 3vw, 22px);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .section-note {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .settings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+      gap: 10px;
+      align-items: end;
+      margin-top: 16px;
+    }
+
+    .progress-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .progress-card {
+      padding: 12px;
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius);
+      background: rgba(16, 19, 25, 0.45);
+    }
+
+    .progress-card strong {
+      display: block;
+      font-size: 0.88rem;
+      margin-bottom: 9px;
+    }
+
+    .progress-bar {
+      height: 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      max-width: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--warn));
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+
+    .progress-text {
+      color: var(--muted);
+      margin-top: 8px;
+      font-size: 0.82rem;
+      line-height: 1.35;
+    }
+
+    .trend-chart {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .chart-empty,
+    .empty {
+      color: var(--muted);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      text-align: center;
+      line-height: 1.45;
+    }
+
+    .chart-row {
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr) minmax(0, 1fr) 62px;
+      gap: 10px;
+      align-items: center;
+      min-height: 38px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .chart-time {
+      color: var(--text);
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .bar-wrap {
+      position: relative;
+      height: 22px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .bar-fill {
+      height: 100%;
+      min-width: 2px;
+      border-radius: 999px;
+    }
+
+    .bar-fill.interval {
+      background: var(--blue);
+    }
+
+    .bar-fill.duration {
+      background: var(--accent);
+    }
+
+    .bar-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      color: var(--text);
+      font-size: 0.74rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .intensity-dot {
+      display: inline-flex;
+      width: 46px;
+      height: 26px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .intensity-dot.set {
+      border-color: rgba(242, 184, 75, 0.48);
+      color: #ffd98f;
+      background: rgba(242, 184, 75, 0.09);
+    }
+
+    .report-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .history-list,
+    .event-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .entry,
+    .event-row {
+      display: grid;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid var(--border-soft);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: rgba(32, 39, 53, 0.72);
+      padding: 13px;
+    }
+
+    .entry {
+      grid-template-columns: 48px minmax(112px, 1fr) repeat(3, minmax(80px, auto)) auto;
+    }
+
+    .event-row {
+      grid-template-columns: minmax(120px, 1fr) minmax(112px, auto) minmax(0, 2fr) auto;
+      border-left-color: var(--warn);
+    }
+
+    .entry-num,
+    .entry-label {
+      color: var(--quiet);
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .entry-time,
+    .event-time {
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.35;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .entry-main,
+    .event-type {
+      color: var(--text);
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .entry-pill {
+      justify-self: start;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(72, 198, 176, 0.09);
+      color: #a9f5e5;
+      font-size: 0.78rem;
+      font-weight: 800;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .entry-pill.close {
+      color: #ffd5d8;
+      background: rgba(239, 111, 120, 0.12);
+    }
+
+    .entry-note,
+    .event-note {
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+
+    .row-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 6px;
     }
 
     .notes-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 12px;
       margin-bottom: 8px;
     }
 
-    .notes-header label {
-      font-size: .7rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-    }
-
-    .notes-saved {
-      font-size: .7rem;
-      color: var(--green);
-      letter-spacing: .5px;
+    .saved-indicator {
+      color: #9ff0df;
+      font-size: 0.78rem;
+      font-weight: 700;
       opacity: 0;
-      transition: opacity .3s;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      transition: opacity 0.2s ease;
     }
 
-    .notes-saved.visible {
+    .saved-indicator.visible {
       opacity: 1;
     }
 
+    .safety-copy {
+      color: var(--muted);
+      margin-top: 14px;
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+
     footer {
-      margin-top: 40px;
-      color: var(--muted);
-      font-size: .72rem;
+      margin: 28px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-soft);
+      color: var(--quiet);
+      font-size: 0.78rem;
       text-align: center;
-      opacity: .72;
-      line-height: 1.8;
-      padding-top: 24px;
-      border-top: 1px solid rgba(42, 48, 80, 0.4);
-      width: 100%;
-      max-width: 640px;
-    }
-
-    .storage-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: rgba(52, 211, 153, 0.08);
-      border: 1px solid rgba(52, 211, 153, 0.2);
-      color: var(--green);
-      font-size: .68rem;
-      padding: 3px 10px;
-      border-radius: 20px;
-      letter-spacing: .5px;
-      margin-bottom: 10px;
-    }
-
-    footer a {
-      color: var(--muted);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(136, 146, 176, .25);
-      transition: opacity .2s;
-    }
-
-    footer a:hover {
-      opacity: .8;
-    }
-
-    /* ── Breathing Modal ── */
-    .btn-breathe {
-      background: rgba(124, 106, 247, 0.15);
-      border: 1px solid rgba(124, 106, 247, 0.4);
-      color: var(--accent2);
-      padding: 10px 20px;
-      border-radius: 24px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 24px;
-      transition: all 0.2s;
-      font-family: inherit;
-    }
-
-    .btn-breathe:hover {
-      background: rgba(124, 106, 247, 0.25);
-      border-color: var(--accent);
+      line-height: 1.7;
+      max-width: 760px;
     }
 
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(13, 15, 20, 0.85);
-      backdrop-filter: blur(8px);
       z-index: 1000;
       display: none;
-      justify-content: center;
       align-items: center;
-      opacity: 0;
-      transition: opacity 0.3s;
+      justify-content: center;
+      padding: 14px;
+      background: rgba(10, 12, 16, 0.78);
+      backdrop-filter: blur(8px);
     }
 
     .modal-overlay.show {
       display: flex;
-      opacity: 1;
+    }
+
+    .modal {
+      width: min(100%, 540px);
+      max-height: 92vh;
+      overflow: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+      padding: 18px;
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-grid .full {
+      grid-column: 1 / -1;
+    }
+
+    .modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 16px;
     }
 
     .breathe-panel {
-      background: var(--card);
+      width: min(100%, 420px);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 40px 30px;
-      width: 90%;
-      max-width: 400px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
-      position: relative;
-      transform: translateY(20px);
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, .5);
-    }
-
-    .modal-overlay.show .breathe-panel {
-      transform: translateY(0);
-    }
-
-    .btn-close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: none;
-      border: none;
-      color: var(--muted);
-      cursor: pointer;
-      padding: 8px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-    }
-
-    .btn-close:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--text);
-    }
-
-    .breathe-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text);
+      background: var(--surface);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+      padding: 24px;
+      display: grid;
+      gap: 22px;
+      justify-items: center;
       text-align: center;
     }
 
-    .breathe-desc {
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-align: center;
-      max-width: 250px;
-      margin-top: -24px;
-    }
-
-    /* The breathing box visualization */
     .breathe-box-wrap {
       position: relative;
-      width: 200px;
-      height: 200px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 210px;
+      height: 210px;
+      display: grid;
+      place-items: center;
     }
 
     .breathe-box {
       width: 100px;
       height: 100px;
-      background: linear-gradient(135deg, rgba(124, 106, 247, 0.2), rgba(167, 139, 250, 0.2));
       border: 2px solid var(--accent);
-      border-radius: 12px;
+      border-radius: var(--radius);
+      background: rgba(72, 198, 176, 0.18);
       transition: all 4s linear;
-      /* Smooth hardware acceleration over 4s */
     }
 
     .breathe-box.inhale {
       transform: scale(2);
-      border-color: var(--accent2);
-      background: linear-gradient(135deg, rgba(124, 106, 247, 0.4), rgba(167, 139, 250, 0.4));
+      border-color: var(--blue);
+      background: rgba(122, 169, 255, 0.2);
     }
 
     .breathe-box.hold {
-      /* Maintains scale from the previous class (inhale or exhale) */
       opacity: 0.9;
     }
 
     .breathe-box.exhale {
       transform: scale(1);
-      border-color: var(--accent);
-      background: linear-gradient(135deg, rgba(124, 106, 247, 0.2), rgba(167, 139, 250, 0.2));
     }
 
     .breathe-text {
       position: absolute;
-      font-size: 1.2rem;
-      font-weight: 700;
       color: var(--text);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-      z-index: 10;
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0;
     }
 
-    .btn-breathe-start {
-      background: var(--text);
-      color: var(--bg);
-      border: none;
-      padding: 12px 32px;
-      border-radius: 20px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: transform 0.2s, background 0.2s;
-      width: 100%;
-      font-family: inherit;
+    #printReport {
+      display: none;
     }
 
-    .btn-breathe-start:hover {
-      transform: scale(1.05);
-      background: #fff;
+    @media (max-width: 820px) {
+      .app-header,
+      .timer-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .privacy-pill {
+        justify-self: start;
+      }
+
+      .btn-main {
+        justify-self: center;
+      }
+
+      .summary-grid,
+      .dashboard-grid,
+      .progress-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .settings-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .settings-grid .settings-actions {
+        grid-column: 1 / -1;
+      }
+
+      .entry {
+        grid-template-columns: 44px 1fr auto;
+      }
+
+      .entry .entry-pill:nth-of-type(2),
+      .entry .entry-pill:nth-of-type(3),
+      .entry .entry-time {
+        grid-column: 2 / -1;
+      }
+
+      .entry .row-actions {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+      }
+
+      .event-row {
+        grid-template-columns: 1fr auto;
+      }
+
+      .event-note,
+      .event-row .row-actions {
+        grid-column: 1 / -1;
+      }
+
+      .chart-row {
+        grid-template-columns: 64px minmax(0, 1fr);
+      }
+
+      .chart-row .bar-wrap:nth-of-type(2),
+      .chart-row .intensity-dot {
+        grid-column: 2 / -1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 12px 10px 36px;
+      }
+
+      .panel,
+      .section {
+        border-radius: 0;
+        margin-left: -2px;
+        margin-right: -2px;
+      }
+
+      .summary-grid,
+      .dashboard-grid,
+      .progress-grid,
+      .settings-grid,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .live-clock {
+        font-size: clamp(3rem, 18vw, 4.6rem);
+      }
+
+      .actions-row,
+      .report-actions,
+      .modal-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .btn,
+      .btn-main {
+        width: 100%;
+      }
+
+      .btn-main {
+        max-width: 260px;
+      }
+
+      .intensity-buttons {
+        grid-template-columns: repeat(6, minmax(38px, 1fr));
+      }
+
+      .entry {
+        grid-template-columns: 1fr;
+      }
+
+      .entry .entry-pill:nth-of-type(2),
+      .entry .entry-pill:nth-of-type(3),
+      .entry .entry-time,
+      .entry .row-actions {
+        grid-column: auto;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        color: #111;
+        padding: 0;
+      }
+
+      body * {
+        visibility: hidden;
+      }
+
+      #printReport,
+      #printReport * {
+        visibility: visible;
+      }
+
+      #printReport {
+        display: block;
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 100%;
+        color: #111;
+        padding: 24px;
+        font-family: Arial, sans-serif;
+      }
+
+      #printReport h1,
+      #printReport h2 {
+        color: #111;
+        margin-bottom: 8px;
+      }
+
+      #printReport p {
+        margin: 4px 0 10px;
+      }
+
+      #printReport table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 10px 0 18px;
+        font-size: 11px;
+      }
+
+      #printReport th,
+      #printReport td {
+        border: 1px solid #bbb;
+        padding: 6px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      #printReport th {
+        background: #eee;
+      }
     }
   </style>
 </head>
 
 <body>
-
   <main>
-
-    <h1>Contraction Timer</h1>
-    <p class="subtitle">Track duration & frequency of contractions</p>
-
-    <button class="btn-breathe" onclick="openBreathingModal()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 3a9 9 0 0 1 9 9c0 3-1.5 5.5-4 7.5L12 21l-5-1.5C4.5 17.5 3 15 3 12a9 9 0 0 1 9-9z" />
-      </svg>
-      Box Breathing
-    </button>
-
-    <div class="panel">
-      <!-- live duration clock -->
+    <header class="app-header">
       <div>
-        <div class="live-clock" id="liveClock">00:00</div>
-        <div class="clock-label" id="clockLabel">Waiting to start</div>
+        <h1>Contraction Timer</h1>
+        <p class="subtitle">Timer, labor pattern dashboard, timeline, and provider report. Data stays in this browser.</p>
+      </div>
+      <div class="privacy-pill">Local only</div>
+    </header>
+
+    <section class="panel" aria-labelledby="timerTitle">
+      <h2 id="timerTitle" class="sr-only" style="position:absolute;left:-9999px;">Contraction timer</h2>
+      <div class="timer-layout">
+        <div class="timer-readout">
+          <div class="live-clock" id="liveClock">00:00</div>
+          <div class="clock-label" id="clockLabel">Ready to start</div>
+        </div>
+        <button class="btn-main" id="mainBtn" onclick="toggleContraction()">START</button>
       </div>
 
-      <!-- big button -->
-      <button class="btn-main" id="mainBtn" onclick="toggleContraction()">
-        START
-      </button>
+      <div class="actions-row">
+        <button class="btn" id="undoBtn" onclick="undoLastContraction()" disabled>Undo Last</button>
+        <button class="btn" onclick="openEntryEditor()">Add Missed</button>
+        <button class="btn" onclick="openBreathingModal()">Box Breathing</button>
+      </div>
 
-      <!-- stats row -->
-      <div class="stats">
-        <div class="stat">
-          <div class="stat-value" id="statCount">0</div>
-          <div class="stat-label">Contractions</div>
+      <div class="summary-grid" aria-label="Current labor summary">
+        <div class="metric">
+          <div class="metric-value" id="statCount">0</div>
+          <div class="metric-label">Contractions</div>
         </div>
-        <div class="stat">
-          <div class="stat-value" id="statAvgDur">—</div>
-          <div class="stat-label">Avg Duration</div>
+        <div class="metric">
+          <div class="metric-value" id="statLastDuration">-</div>
+          <div class="metric-label">Last Duration</div>
         </div>
-        <div class="stat">
-          <div class="stat-value" id="statAvgInt">—</div>
-          <div class="stat-label">Avg Interval</div>
+        <div class="metric">
+          <div class="metric-value" id="statLastInterval">-</div>
+          <div class="metric-label">Last Interval</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="statSinceLast">-</div>
+          <div class="metric-label">Since Last Start</div>
         </div>
       </div>
 
-      <!-- 5-1-1 rule badge -->
-      <div class="rule-badge idle" id="ruleBadge">
-        📊 5-1-1 Rule: Contractions every 5 min, lasting 1 min, for 1+ hour → call your provider
+      <div class="rule-badge" id="ruleBadge">
+        Timing guideline: every 5 min, lasting 60 sec, for 60 min. Follow your provider's instructions.
       </div>
-    </div>
 
-    <!-- history -->
-    <div class="history-header">
-      <h2>History</h2>
-      <button class="btn-clear" onclick="clearHistory()">Clear All</button>
-    </div>
-    <div class="history-list" id="historyList">
-      <div class="history-empty" id="emptyMsg">No contractions recorded yet. Press START when one begins.</div>
-    </div>
+      <div class="quick-panel" id="quickPanel">
+        <div class="quick-title">
+          <span>Last contraction details</span>
+          <span class="quick-duration" id="quickDuration">-</span>
+        </div>
+        <div>
+          <div class="field-label">Intensity 0-10, optional</div>
+          <div class="intensity-buttons" id="quickIntensityButtons"></div>
+        </div>
+        <div>
+          <label for="quickNote">Contraction note</label>
+          <textarea id="quickNote" placeholder="Pressure, back pain, position, coping, provider instruction"></textarea>
+        </div>
+        <div class="actions-row">
+          <button class="btn primary" onclick="saveQuickDetails()">Save Details</button>
+          <button class="btn subtle" onclick="skipQuickDetails()">Skip</button>
+        </div>
+      </div>
+    </section>
 
-    <!-- notes -->
-    <div class="notes-wrap" style="margin-top:20px;">
+    <section class="section" aria-labelledby="dashboardTitle">
+      <div class="section-header">
+        <div>
+          <h2 id="dashboardTitle">Provider Dashboard</h2>
+          <p class="section-note">Summary uses contraction start-to-start intervals.</p>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="metric">
+          <div class="metric-value" id="statAvgDurAll">-</div>
+          <div class="metric-label">Avg Duration</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="statAvgIntAll">-</div>
+          <div class="metric-label">Avg Interval</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="statLast5">-</div>
+          <div class="metric-label">Last 5 Avg</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="statLastHour">-</div>
+          <div class="metric-label">Last Hour</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="statRegularity">-</div>
+          <div class="metric-label">Regularity</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="statDurationTrend">-</div>
+          <div class="metric-label">Duration Trend</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="statIntervalTrend">-</div>
+          <div class="metric-label">Interval Trend</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="statIntensityTrend">-</div>
+          <div class="metric-label">Intensity Trend</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="statAvgIntensity">-</div>
+          <div class="metric-label">Avg Intensity</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="statSessionSpan">-</div>
+          <div class="metric-label">Session Span</div>
+        </div>
+      </div>
+
+      <div class="settings-grid">
+        <div>
+          <label for="settingInterval">Interval minutes</label>
+          <input id="settingInterval" type="number" min="1" max="30" step="1" value="5" onchange="saveSettings()" />
+        </div>
+        <div>
+          <label for="settingDuration">Duration seconds</label>
+          <input id="settingDuration" type="number" min="10" max="180" step="5" value="60" onchange="saveSettings()" />
+        </div>
+        <div>
+          <label for="settingWindow">Window minutes</label>
+          <input id="settingWindow" type="number" min="10" max="180" step="5" value="60" onchange="saveSettings()" />
+        </div>
+        <div class="settings-actions">
+          <button class="btn" onclick="resetSettings()">Reset Guideline</button>
+        </div>
+      </div>
+
+      <div class="progress-grid">
+        <div class="progress-card">
+          <strong>Interval</strong>
+          <div class="progress-bar"><div class="progress-fill" id="intervalProgress"></div></div>
+          <div class="progress-text" id="intervalProgressText">No interval yet</div>
+        </div>
+        <div class="progress-card">
+          <strong>Duration</strong>
+          <div class="progress-bar"><div class="progress-fill" id="durationProgress"></div></div>
+          <div class="progress-text" id="durationProgressText">No duration yet</div>
+        </div>
+        <div class="progress-card">
+          <strong>Window</strong>
+          <div class="progress-bar"><div class="progress-fill" id="windowProgress"></div></div>
+          <div class="progress-text" id="windowProgressText">No pattern window yet</div>
+        </div>
+      </div>
+
+      <div class="trend-chart" id="trendChart" aria-live="polite"></div>
+
+      <div class="report-actions">
+        <button class="btn primary" onclick="copySummary()">Copy Summary</button>
+        <button class="btn" onclick="downloadCsv()">Download CSV</button>
+        <button class="btn" onclick="printReport()">Print / Save PDF</button>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="historyTitle">
+      <div class="section-header">
+        <h2 id="historyTitle">Contraction History</h2>
+        <button class="btn danger" onclick="clearHistory()">Clear History</button>
+      </div>
+      <div class="history-list" id="historyList">
+        <div class="empty">No contractions recorded yet.</div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="eventsTitle">
+      <div class="section-header">
+        <h2 id="eventsTitle">Labor Timeline</h2>
+      </div>
+      <div class="settings-grid">
+        <div>
+          <label for="eventType">Event</label>
+          <select id="eventType">
+            <option value="Water broke">Water broke</option>
+            <option value="Mucus or bloody show">Mucus or bloody show</option>
+            <option value="Provider called">Provider called</option>
+            <option value="Left for hospital/birth center">Left for hospital/birth center</option>
+            <option value="Arrived">Arrived</option>
+            <option value="Cervical check">Cervical check</option>
+            <option value="Medication/epidural">Medication/epidural</option>
+            <option value="Position change">Position change</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="eventTime">Time</label>
+          <input id="eventTime" type="datetime-local" step="1" />
+        </div>
+        <div>
+          <label for="eventNote">Note</label>
+          <input id="eventNote" type="text" placeholder="Optional detail" />
+        </div>
+        <div class="settings-actions">
+          <button class="btn primary" onclick="addLaborEvent()">Add Event</button>
+        </div>
+      </div>
+      <div class="event-list" id="eventList" style="margin-top:14px;">
+        <div class="empty">No labor events recorded yet.</div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="notesTitle">
       <div class="notes-header">
-        <label for="notes">Notes</label>
-        <span class="notes-saved" id="notesSaved">✓ Saved <span id="notesSavedTime"></span></span>
+        <h2 id="notesTitle">Notes</h2>
+        <span class="saved-indicator" id="notesSaved">Saved</span>
       </div>
-      <textarea id="notes" placeholder="Record symptoms, water breaking, hospital bag location, etc…"
+      <textarea id="notes" placeholder="Symptoms, provider instructions, birth plan changes, fluids, movement, support notes"
         oninput="saveNotes()"></textarea>
-    </div>
-
-    <!-- Reset All Data -->
-    <button class="btn-reset-all" onclick="resetAllData()">🗑 Clear All Data</button>
-
-    <!-- Breathing Modal -->
-    <div class="modal-overlay" id="breatheModal">
-      <div class="breathe-panel">
-        <button class="btn-close" onclick="closeBreathingModal()">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-
-        <div class="breathe-title">Box Breathing</div>
-        <div class="breathe-desc">Calm your nervous system using the 4-box method.</div>
-
-        <div class="breathe-box-wrap">
-          <div class="breathe-box" id="breatheBox"></div>
-          <div class="breathe-text" id="breatheText">READY</div>
-        </div>
-
-        <button class="btn-breathe-start" id="btnBreatheToggle" onclick="toggleBreathing()">START</button>
+      <p class="safety-copy">
+        This tracker is not medical advice. Call your provider with questions, and seek urgent care for heavy bleeding,
+        decreased fetal movement, severe constant pain, preterm labor signs, or if your water breaks and your care team
+        has told you to call.
+      </p>
+      <div class="actions-row" style="margin-top:14px;">
+        <button class="btn danger" onclick="resetAllData()">Clear All Data</button>
       </div>
-    </div>
+    </section>
 
     <footer>
-      <p><span class="storage-badge">🔒 Saved to your browser — never leaves your device</span></p>
-      <p>Refresh-safe · No account needed · No data sent anywhere</p>
-      <p style="margin-top: 8px;">
-        Built with ❤️ by <a href="https://www.murdawkmedia.com" target="_blank" rel="noopener noreferrer">Murdawk
-          Media</a> —
-        <a href="https://www.murdawkmedia.com" target="_blank" rel="noopener noreferrer">web design &amp; dev
-          services</a>
-      </p>
-      <p style="margin-top: 8px;">
-        <a href="https://github.com/murdawkmedia/contraction-timing" target="_blank" rel="noopener noreferrer">⭐ Open
-          Source on GitHub</a>
-        · MIT License · Free forever
+      <p>Saved to this browser only. No account, server, analytics, or remote storage.</p>
+      <p>
+        Built by <a href="https://www.murdawkmedia.com" target="_blank" rel="noopener noreferrer">Murdawk Media</a>.
+        <a href="https://github.com/murdawkmedia/contraction-timing" target="_blank" rel="noopener noreferrer">Open source on GitHub</a>.
       </p>
     </footer>
-
   </main>
 
+  <div class="modal-overlay" id="entryModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="entryEditorTitle">
+      <div class="modal-head">
+        <h2 id="entryEditorTitle">Edit Contraction</h2>
+        <button class="icon-btn" onclick="closeEntryEditor()" aria-label="Close editor">X</button>
+      </div>
+      <div class="form-grid">
+        <div>
+          <label for="editStart">Start</label>
+          <input id="editStart" type="datetime-local" step="1" />
+        </div>
+        <div>
+          <label for="editEnd">End</label>
+          <input id="editEnd" type="datetime-local" step="1" />
+        </div>
+        <div>
+          <label for="editIntensity">Intensity 0-10</label>
+          <input id="editIntensity" type="number" min="0" max="10" step="1" placeholder="Optional" />
+        </div>
+        <div>
+          <label for="editDurationPreview">Duration</label>
+          <input id="editDurationPreview" type="text" readonly />
+        </div>
+        <div class="full">
+          <label for="editNote">Note</label>
+          <textarea id="editNote" placeholder="Optional contraction note"></textarea>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn danger" id="deleteEntryBtn" onclick="deleteEditingEntry()">Delete</button>
+        <button class="btn subtle" onclick="closeEntryEditor()">Cancel</button>
+        <button class="btn primary" onclick="saveEntryEditor()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="breatheModal">
+    <div class="breathe-panel" role="dialog" aria-modal="true" aria-labelledby="breatheTitle">
+      <div class="modal-head" style="width:100%;margin-bottom:0;">
+        <h2 id="breatheTitle">Box Breathing</h2>
+        <button class="icon-btn" onclick="closeBreathingModal()" aria-label="Close breathing">X</button>
+      </div>
+      <div class="breathe-box-wrap">
+        <div class="breathe-box" id="breatheBox"></div>
+        <div class="breathe-text" id="breatheText">READY</div>
+      </div>
+      <button class="btn primary" id="btnBreatheToggle" onclick="toggleBreathing()">START</button>
+    </div>
+  </div>
+
+  <div id="printReport"></div>
+
   <script>
-    // ── State ──────────────────────────────────────────────────────────────────
-    let contractions = JSON.parse(localStorage.getItem('contractions') || '[]');
+    const STORAGE = {
+      contractions: 'contractions',
+      events: 'laborEvents',
+      notes: 'contractionNotes',
+      settings: 'laborSettings',
+      activeStart: 'activeContractionStart'
+    };
+
+    const DEFAULT_SETTINGS = {
+      intervalMinutes: 5,
+      durationSeconds: 60,
+      windowMinutes: 60
+    };
+
+    let contractions = loadJson(STORAGE.contractions, []).map(normalizeContraction).filter(Boolean);
+    let laborEvents = loadJson(STORAGE.events, []).map(normalizeEvent).filter(Boolean);
+    let settings = normalizeSettings(loadJson(STORAGE.settings, DEFAULT_SETTINGS));
     let active = false;
     let startTime = null;
     let animationFrameId = null;
+    let pendingDetailId = null;
+    let quickIntensity = null;
+    let editingEntryId = null;
+    let notesSaveTimer = null;
+    let breatheInterval = null;
+    let breathePhase = 0;
+    let isBreathing = false;
 
-    // ── DOM refs ────────────────────────────────────────────────────────────────
     const liveClock = document.getElementById('liveClock');
     const clockLabel = document.getElementById('clockLabel');
     const mainBtn = document.getElementById('mainBtn');
-    const statCount = document.getElementById('statCount');
-    const statAvgDur = document.getElementById('statAvgDur');
-    const statAvgInt = document.getElementById('statAvgInt');
+    const undoBtn = document.getElementById('undoBtn');
     const ruleBadge = document.getElementById('ruleBadge');
     const historyList = document.getElementById('historyList');
-    const emptyMsg = document.getElementById('emptyMsg');
+    const eventList = document.getElementById('eventList');
+    const trendChart = document.getElementById('trendChart');
+    const quickPanel = document.getElementById('quickPanel');
+    const quickDuration = document.getElementById('quickDuration');
+    const quickNote = document.getElementById('quickNote');
+    const quickIntensityButtons = document.getElementById('quickIntensityButtons');
+    const notesSaved = document.getElementById('notesSaved');
+    const entryModal = document.getElementById('entryModal');
+    const breatheModal = document.getElementById('breatheModal');
+    const breatheBox = document.getElementById('breatheBox');
+    const breatheText = document.getElementById('breatheText');
+    const btnBreatheToggle = document.getElementById('btnBreatheToggle');
 
-    // restore notes
-    document.getElementById('notes').value = localStorage.getItem('contractionNotes') || '';
+    document.getElementById('notes').value = localStorage.getItem(STORAGE.notes) || '';
+    document.getElementById('eventTime').value = toDateTimeLocal(Date.now());
+    applySettingsToInputs();
+    buildQuickIntensityButtons();
+    restoreActiveTimer();
+    bindEditorPreview();
+    render();
+    setInterval(render, 15000);
 
-    // ── Helpers ─────────────────────────────────────────────────────────────────
-    function pad(n) { return String(Math.floor(n)).padStart(2, '0'); }
+    function loadJson(key, fallback) {
+      try {
+        const raw = localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : fallback;
+      } catch (error) {
+        return fallback;
+      }
+    }
+
+    function saveJson(key, value) {
+      localStorage.setItem(key, JSON.stringify(value));
+    }
+
+    function uid(prefix) {
+      if (window.crypto && crypto.randomUUID) return `${prefix}_${crypto.randomUUID()}`;
+      return `${prefix}_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+    }
+
+    function normalizeContraction(item) {
+      if (!item || !Number.isFinite(Number(item.start))) return null;
+      const start = Number(item.start);
+      const duration = Number.isFinite(Number(item.duration))
+        ? Math.max(0, Number(item.duration))
+        : Math.max(0, Number(item.end || start) - start);
+      const end = Number.isFinite(Number(item.end)) ? Number(item.end) : start + duration;
+      return {
+        id: item.id || `c_${start}_${end}`,
+        start,
+        end,
+        duration: Math.max(0, end - start || duration),
+        intensity: normalizeIntensity(item.intensity),
+        note: item.note || '',
+        createdAt: item.createdAt || start,
+        updatedAt: item.updatedAt || end
+      };
+    }
+
+    function normalizeEvent(item) {
+      if (!item || !Number.isFinite(Number(item.time))) return null;
+      return {
+        id: item.id || `e_${item.time}_${Math.random().toString(16).slice(2)}`,
+        type: item.type || 'Other',
+        time: Number(item.time),
+        note: item.note || '',
+        createdAt: item.createdAt || item.time,
+        updatedAt: item.updatedAt || item.time
+      };
+    }
+
+    function normalizeSettings(value) {
+      const merged = Object.assign({}, DEFAULT_SETTINGS, value || {});
+      return {
+        intervalMinutes: clamp(Number(merged.intervalMinutes), 1, 30, DEFAULT_SETTINGS.intervalMinutes),
+        durationSeconds: clamp(Number(merged.durationSeconds), 10, 180, DEFAULT_SETTINGS.durationSeconds),
+        windowMinutes: clamp(Number(merged.windowMinutes), 10, 180, DEFAULT_SETTINGS.windowMinutes)
+      };
+    }
+
+    function normalizeIntensity(value) {
+      if (value === null || value === undefined || value === '') return null;
+      const num = Number(value);
+      return Number.isFinite(num) ? Math.max(0, Math.min(10, Math.round(num))) : null;
+    }
+
+    function clamp(value, min, max, fallback) {
+      if (!Number.isFinite(value)) return fallback;
+      return Math.max(min, Math.min(max, value));
+    }
+
+    function sortNewest(items) {
+      return [...items].sort((a, b) => b.start - a.start);
+    }
+
+    function sortOldest(items) {
+      return [...items].sort((a, b) => a.start - b.start);
+    }
+
+    function pad(n) {
+      return String(Math.floor(n)).padStart(2, '0');
+    }
 
     function fmtDuration(ms) {
-      const s = Math.floor(ms / 1000);
-      const m = Math.floor(s / 60);
-      return m ? `${m}m ${pad(s % 60)}s` : `${s}s`;
+      if (!Number.isFinite(ms) || ms < 0) return '-';
+      const totalSeconds = Math.floor(ms / 1000);
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      if (hours) return `${hours}h ${pad(minutes)}m`;
+      if (minutes) return `${minutes}m ${pad(seconds)}s`;
+      return `${seconds}s`;
     }
 
     function fmtClock(ms) {
-      const s = Math.floor(ms / 1000);
-      return `${pad(Math.floor(s / 60))}:${pad(s % 60)}`;
+      const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      return `${pad(minutes)}:${pad(seconds)}`;
     }
 
     function fmtTime(ts) {
       return new Date(ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     }
 
-    function updateClock() {
-      if (active) {
-        liveClock.textContent = fmtClock(Date.now() - startTime);
-        animationFrameId = requestAnimationFrame(updateClock);
-      }
-    }
-
-    // ── Core logic ───────────────────────────────────────────────────────────────
-    function toggleContraction() {
-      if (!active) {
-        // START
-        active = true;
-        startTime = Date.now();
-        mainBtn.textContent = 'STOP';
-        mainBtn.classList.add('active');
-        liveClock.classList.add('active');
-        clockLabel.textContent = 'Contraction in progress…';
-
-        updateClock();
-      } else {
-        // STOP
-        const duration = Date.now() - startTime;
-        cancelAnimationFrame(animationFrameId);
-        active = false;
-
-        // record
-        const entry = { start: startTime, duration, end: Date.now() };
-        contractions.unshift(entry);   // newest first
-        localStorage.setItem('contractions', JSON.stringify(contractions));
-
-        // reset UI
-        mainBtn.textContent = 'START';
-        mainBtn.classList.remove('active');
-        liveClock.classList.remove('active');
-        liveClock.textContent = '00:00';
-        clockLabel.textContent = 'Ready — press START for next contraction';
-
-        render();
-      }
-    }
-
-    function clearHistory() {
-      if (confirm('Clear all contraction history?')) {
-        contractions = [];
-        localStorage.removeItem('contractions');
-        render();
-      }
-    }
-
-    let notesSaveTimer = null;
-    const notesSaved = document.getElementById('notesSaved');
-    const notesSavedTime = document.getElementById('notesSavedTime');
-
-    function saveNotes() {
-      localStorage.setItem('contractionNotes', document.getElementById('notes').value);
-      // Show "✓ Saved" indicator with current time
-      const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      notesSavedTime.textContent = '· ' + now;
-      notesSaved.classList.add('visible');
-      // Keep it visible; fade out after 3s of inactivity
-      clearTimeout(notesSaveTimer);
-      notesSaveTimer = setTimeout(() => notesSaved.classList.remove('visible'), 3000);
-    }
-
-    function resetAllData() {
-      if (confirm('This will clear ALL data: contractions, notes, everything. Continue?')) {
-        contractions = [];
-        localStorage.removeItem('contractions');
-        localStorage.removeItem('contractionNotes');
-        document.getElementById('notes').value = '';
-        render();
-      }
-    }
-
-    // ── Rendering ────────────────────────────────────────────────────────────────
-    function render() {
-      const n = contractions.length;
-      statCount.textContent = n;
-
-      if (n === 0) {
-        statAvgDur.textContent = '—';
-        statAvgInt.textContent = '—';
-        historyList.innerHTML = '';
-        historyList.appendChild(emptyMsg);
-        emptyMsg.style.display = '';
-        setRuleBadge('idle');
-        return;
-      }
-
-      // averages
-      const avgDur = contractions.reduce((a, c) => a + c.duration, 0) / n;
-      statAvgDur.textContent = fmtDuration(avgDur);
-
-      const intervals = [];
-      for (let i = 0; i < contractions.length - 1; i++) {
-        // contractions[0] is newest; interval = start of i+1 minus start of i (reversed order)
-        intervals.push(contractions[i].start - contractions[i + 1].start);
-      }
-      const avgInt = intervals.length ? intervals.reduce((a, b) => a + b, 0) / intervals.length : null;
-      statAvgInt.textContent = avgInt ? fmtDuration(avgInt) : '—';
-
-      // 5-1-1 check (over last 6 contractions in last 60 min)
-      const recent = contractions.filter(c => Date.now() - c.start < 60 * 60 * 1000);
-      const recentIntervals = [];
-      for (let i = 0; i < recent.length - 1; i++) {
-        recentIntervals.push(recent[i].start - recent[i + 1].start);
-      }
-      const avgRecentInt = recentIntervals.length ? recentIntervals.reduce((a, b) => a + b, 0) / recentIntervals.length : Infinity;
-      const avgRecentDur = recent.length ? recent.reduce((a, c) => a + c.duration, 0) / recent.length : 0;
-
-      if (recent.length >= 6 && avgRecentInt <= 5 * 60 * 1000 && avgRecentDur >= 45 * 1000) {
-        setRuleBadge('call-now');
-      } else if (recent.length >= 3 && avgRecentInt <= 8 * 60 * 1000) {
-        setRuleBadge('watching');
-      } else {
-        setRuleBadge('idle');
-      }
-
-      // build history rows
-      historyList.innerHTML = '';
-      contractions.forEach((c, i) => {
-        const num = n - i; // highest number = most recent
-        const prev = contractions[i + 1];
-        const interval = prev ? fmtDuration(c.start - prev.start) : null;
-        const intervalMs = prev ? (c.start - prev.start) : Infinity;
-        const isClose = intervalMs < 5 * 60 * 1000;
-
-        const row = document.createElement('div');
-        row.className = 'entry';
-        row.innerHTML = `
-      <span class="entry-num">#${num}</span>
-      <span class="entry-time">${fmtTime(c.start)}</span>
-      <span class="entry-duration">${fmtDuration(c.duration)}</span>
-      <span class="entry-interval ${isClose && interval ? 'close' : ''}">${interval ? `↔ ${interval}` : 'First'}</span>
-    `;
-        historyList.appendChild(row);
+    function fmtDateTime(ts) {
+      return new Date(ts).toLocaleString([], {
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
       });
     }
 
-    function setRuleBadge(state) {
-      ruleBadge.className = 'rule-badge ' + state;
-      if (state === 'idle') {
-        ruleBadge.textContent = '📊 5-1-1 Rule: Every 5 min · Last 1 min · For 1 hour → call your provider';
-      } else if (state === 'watching') {
-        ruleBadge.textContent = '⚠️ Contractions getting closer — keep timing, prepare to call';
-      } else {
-        ruleBadge.textContent = '🚨 5-1-1 Rule met — call your provider or head to the hospital!';
+    function toDateTimeLocal(ts) {
+      const date = new Date(ts);
+      const local = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+      return local.toISOString().slice(0, 19);
+    }
+
+    function parseDateTimeLocal(value) {
+      const time = new Date(value).getTime();
+      return Number.isFinite(time) ? time : null;
+    }
+
+    function escapeHtml(value) {
+      return String(value || '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[char]));
+    }
+
+    function updateClock() {
+      if (!active) return;
+      liveClock.textContent = fmtClock(Date.now() - startTime);
+      animationFrameId = requestAnimationFrame(updateClock);
+    }
+
+    function restoreActiveTimer() {
+      const savedStart = Number(localStorage.getItem(STORAGE.activeStart));
+      if (!Number.isFinite(savedStart) || savedStart <= 0) return;
+      active = true;
+      startTime = savedStart;
+      mainBtn.textContent = 'STOP';
+      mainBtn.classList.add('active');
+      liveClock.classList.add('active');
+      clockLabel.textContent = `Contraction in progress since ${fmtTime(startTime)}`;
+      updateClock();
+    }
+
+    function toggleContraction() {
+      if (!active) {
+        startTime = Date.now();
+        active = true;
+        localStorage.setItem(STORAGE.activeStart, String(startTime));
+        mainBtn.textContent = 'STOP';
+        mainBtn.classList.add('active');
+        liveClock.classList.add('active');
+        clockLabel.textContent = 'Contraction in progress';
+        hideQuickPanel();
+        updateClock();
+        return;
+      }
+
+      const end = Date.now();
+      const entry = normalizeContraction({
+        id: uid('c'),
+        start: startTime,
+        end,
+        duration: end - startTime,
+        intensity: null,
+        note: '',
+        createdAt: end,
+        updatedAt: end
+      });
+      cancelAnimationFrame(animationFrameId);
+      active = false;
+      startTime = null;
+      localStorage.removeItem(STORAGE.activeStart);
+      contractions.unshift(entry);
+      saveContractions();
+      mainBtn.textContent = 'START';
+      mainBtn.classList.remove('active');
+      liveClock.classList.remove('active');
+      liveClock.textContent = '00:00';
+      clockLabel.textContent = 'Ready for next contraction';
+      showQuickPanel(entry.id);
+      render();
+    }
+
+    function saveContractions() {
+      contractions = sortNewest(contractions.map(normalizeContraction).filter(Boolean));
+      saveJson(STORAGE.contractions, contractions);
+    }
+
+    function saveEvents() {
+      laborEvents = [...laborEvents].sort((a, b) => b.time - a.time);
+      saveJson(STORAGE.events, laborEvents);
+    }
+
+    function buildQuickIntensityButtons() {
+      quickIntensityButtons.innerHTML = '';
+      for (let i = 0; i <= 10; i += 1) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'intensity-btn';
+        button.textContent = i;
+        button.onclick = () => {
+          quickIntensity = quickIntensity === i ? null : i;
+          renderQuickIntensityButtons();
+        };
+        quickIntensityButtons.appendChild(button);
       }
     }
 
-    // ── Box Breathing Logic ──────────────────────────────────────────────────────
-    const breatheModal = document.getElementById('breatheModal');
-    const breatheBox = document.getElementById('breatheBox');
-    const breatheText = document.getElementById('breatheText');
-    const btnBreatheToggle = document.getElementById('btnBreatheToggle');
+    function renderQuickIntensityButtons() {
+      [...quickIntensityButtons.children].forEach((button, index) => {
+        button.classList.toggle('selected', quickIntensity === index);
+      });
+    }
 
-    let breatheInterval = null;
-    let breathePhase = 0; // 0=inhale, 1=hold, 2=exhale, 3=hold
-    let isBreathing = false;
+    function showQuickPanel(id) {
+      const entry = contractions.find(item => item.id === id);
+      if (!entry) return;
+      pendingDetailId = id;
+      quickIntensity = entry.intensity;
+      quickNote.value = entry.note || '';
+      quickDuration.textContent = fmtDuration(entry.duration);
+      renderQuickIntensityButtons();
+      quickPanel.classList.add('show');
+    }
+
+    function hideQuickPanel() {
+      pendingDetailId = null;
+      quickIntensity = null;
+      quickNote.value = '';
+      quickPanel.classList.remove('show');
+      renderQuickIntensityButtons();
+    }
+
+    function saveQuickDetails() {
+      if (!pendingDetailId) return;
+      const entry = contractions.find(item => item.id === pendingDetailId);
+      if (!entry) return;
+      entry.intensity = quickIntensity;
+      entry.note = quickNote.value.trim();
+      entry.updatedAt = Date.now();
+      saveContractions();
+      hideQuickPanel();
+      render();
+    }
+
+    function skipQuickDetails() {
+      hideQuickPanel();
+    }
+
+    function undoLastContraction() {
+      if (!contractions.length) return;
+      const last = contractions[0];
+      if (!confirm(`Remove the most recent contraction from ${fmtTime(last.start)}?`)) return;
+      contractions = contractions.slice(1);
+      saveContractions();
+      hideQuickPanel();
+      render();
+    }
+
+    function clearHistory() {
+      if (!confirm('Clear all contraction history? Events and notes will stay.')) return;
+      contractions = [];
+      localStorage.removeItem(STORAGE.contractions);
+      localStorage.removeItem(STORAGE.activeStart);
+      active = false;
+      startTime = null;
+      cancelAnimationFrame(animationFrameId);
+      mainBtn.textContent = 'START';
+      mainBtn.classList.remove('active');
+      liveClock.classList.remove('active');
+      liveClock.textContent = '00:00';
+      clockLabel.textContent = 'Ready to start';
+      hideQuickPanel();
+      render();
+    }
+
+    function resetAllData() {
+      if (!confirm('Clear contractions, events, notes, settings, and any active timer?')) return;
+      contractions = [];
+      laborEvents = [];
+      settings = { ...DEFAULT_SETTINGS };
+      active = false;
+      startTime = null;
+      pendingDetailId = null;
+      cancelAnimationFrame(animationFrameId);
+      Object.values(STORAGE).forEach(key => localStorage.removeItem(key));
+      document.getElementById('notes').value = '';
+      document.getElementById('eventNote').value = '';
+      document.getElementById('eventTime').value = toDateTimeLocal(Date.now());
+      applySettingsToInputs();
+      mainBtn.textContent = 'START';
+      mainBtn.classList.remove('active');
+      liveClock.classList.remove('active');
+      liveClock.textContent = '00:00';
+      clockLabel.textContent = 'Ready to start';
+      hideQuickPanel();
+      render();
+    }
+
+    function applySettingsToInputs() {
+      document.getElementById('settingInterval').value = settings.intervalMinutes;
+      document.getElementById('settingDuration').value = settings.durationSeconds;
+      document.getElementById('settingWindow').value = settings.windowMinutes;
+    }
+
+    function saveSettings() {
+      settings = normalizeSettings({
+        intervalMinutes: document.getElementById('settingInterval').value,
+        durationSeconds: document.getElementById('settingDuration').value,
+        windowMinutes: document.getElementById('settingWindow').value
+      });
+      applySettingsToInputs();
+      saveJson(STORAGE.settings, settings);
+      render();
+    }
+
+    function resetSettings() {
+      settings = { ...DEFAULT_SETTINGS };
+      applySettingsToInputs();
+      saveJson(STORAGE.settings, settings);
+      render();
+    }
+
+    function getStats() {
+      const newest = sortNewest(contractions);
+      const oldest = sortOldest(contractions);
+      const intervalsById = new Map();
+      const intervals = [];
+
+      for (let i = 1; i < oldest.length; i += 1) {
+        const interval = oldest[i].start - oldest[i - 1].start;
+        if (interval > 0) {
+          intervals.push(interval);
+          intervalsById.set(oldest[i].id, interval);
+        }
+      }
+
+      const last = newest[0] || null;
+      const previous = newest[1] || null;
+      const lastInterval = last && previous ? last.start - previous.start : null;
+      const lastHour = newest.filter(item => Date.now() - item.start <= 60 * 60 * 1000);
+      const recentWindow = newest.filter(item => Date.now() - item.start <= settings.windowMinutes * 60 * 1000);
+      const recentWindowOldest = sortOldest(recentWindow);
+      const recentWindowIntervals = [];
+      for (let i = 1; i < recentWindowOldest.length; i += 1) {
+        recentWindowIntervals.push(recentWindowOldest[i].start - recentWindowOldest[i - 1].start);
+      }
+
+      return {
+        newest,
+        oldest,
+        intervals,
+        intervalsById,
+        last,
+        lastInterval,
+        lastHour,
+        recentWindow,
+        recentWindowOldest,
+        recentWindowIntervals,
+        avgDurationAll: avg(newest.map(item => item.duration)),
+        avgIntervalAll: avg(intervals),
+        avgLast3Duration: avg(newest.slice(0, 3).map(item => item.duration)),
+        avgLast3Interval: avg(intervalsForNewest(newest, 3)),
+        avgLast5Duration: avg(newest.slice(0, 5).map(item => item.duration)),
+        avgLast5Interval: avg(intervalsForNewest(newest, 5)),
+        avgLastHourDuration: avg(lastHour.map(item => item.duration)),
+        avgLastHourInterval: avg(intervalsForNewest(lastHour, lastHour.length)),
+        avgRecentWindowDuration: avg(recentWindow.map(item => item.duration)),
+        avgRecentWindowInterval: avg(recentWindowIntervals),
+        avgIntensity: avg(newest.map(item => item.intensity).filter(value => value !== null)),
+        regularity: regularityLabel(intervalsForNewest(newest, Math.min(6, newest.length))),
+        durationTrend: trendLabel(newest.slice(0, 3).map(item => item.duration), newest.slice(3, 6).map(item => item.duration), 'longer', 'shorter'),
+        intervalTrend: trendLabel(intervalsForNewest(newest, 4).slice(0, 3), intervalsForNewest(newest.slice(3), 4).slice(0, 3), 'spacing', 'closer', true),
+        intensityTrend: trendLabel(
+          newest.slice(0, 3).map(item => item.intensity).filter(value => value !== null),
+          newest.slice(3, 6).map(item => item.intensity).filter(value => value !== null),
+          'rising',
+          'lower'
+        ),
+        sessionSpan: oldest.length > 1 ? newest[0].start - oldest[0].start : null
+      };
+    }
+
+    function intervalsForNewest(items, count) {
+      const subset = sortNewest(items).slice(0, count);
+      const values = [];
+      for (let i = 0; i < subset.length - 1; i += 1) {
+        const interval = subset[i].start - subset[i + 1].start;
+        if (interval > 0) values.push(interval);
+      }
+      return values;
+    }
+
+    function avg(values) {
+      const clean = values.filter(value => Number.isFinite(value));
+      if (!clean.length) return null;
+      return clean.reduce((sum, value) => sum + value, 0) / clean.length;
+    }
+
+    function stdev(values) {
+      const mean = avg(values);
+      if (!Number.isFinite(mean) || values.length < 2) return null;
+      const variance = values.reduce((sum, value) => sum + Math.pow(value - mean, 2), 0) / values.length;
+      return Math.sqrt(variance);
+    }
+
+    function regularityLabel(values) {
+      const clean = values.filter(value => Number.isFinite(value));
+      if (clean.length < 3) return '-';
+      const mean = avg(clean);
+      const sd = stdev(clean);
+      const ratio = sd / mean;
+      if (ratio <= 0.18) return 'Regular';
+      if (ratio <= 0.35) return 'Variable';
+      return 'Irregular';
+    }
+
+    function trendLabel(recentValues, previousValues, upLabel, downLabel, lowerIsUp) {
+      const recent = avg(recentValues);
+      const previous = avg(previousValues);
+      if (!Number.isFinite(recent) || !Number.isFinite(previous)) return '-';
+      const delta = recent - previous;
+      const threshold = Math.max(Math.abs(previous) * 0.08, lowerIsUp ? 30 * 1000 : 5 * 1000);
+      if (Math.abs(delta) < threshold) return 'Steady';
+      if (lowerIsUp) return delta < 0 ? upLabel : downLabel;
+      return delta > 0 ? upLabel : downLabel;
+    }
+
+    function render() {
+      contractions = sortNewest(contractions.map(normalizeContraction).filter(Boolean));
+      laborEvents = [...laborEvents].sort((a, b) => b.time - a.time);
+      const stats = getStats();
+
+      setText('statCount', contractions.length);
+      setText('statLastDuration', stats.last ? fmtDuration(stats.last.duration) : '-');
+      setText('statLastInterval', stats.lastInterval ? fmtDuration(stats.lastInterval) : '-');
+      setText('statSinceLast', stats.last ? fmtDuration(Date.now() - stats.last.start) : '-');
+      setText('statAvgDurAll', stats.avgDurationAll ? fmtDuration(stats.avgDurationAll) : '-');
+      setText('statAvgIntAll', stats.avgIntervalAll ? fmtDuration(stats.avgIntervalAll) : '-');
+      setText('statLast5', stats.avgLast5Duration ? `${fmtDuration(stats.avgLast5Duration)} / ${stats.avgLast5Interval ? fmtDuration(stats.avgLast5Interval) : '-'}` : '-');
+      setText('statLastHour', stats.lastHour.length ? `${stats.lastHour.length} tracked` : '-');
+      setText('statRegularity', stats.regularity);
+      setText('statDurationTrend', stats.durationTrend);
+      setText('statIntervalTrend', stats.intervalTrend);
+      setText('statIntensityTrend', stats.intensityTrend);
+      setText('statAvgIntensity', stats.avgIntensity !== null ? `${stats.avgIntensity.toFixed(1)}/10` : '-');
+      setText('statSessionSpan', stats.sessionSpan ? fmtDuration(stats.sessionSpan) : '-');
+      undoBtn.disabled = !contractions.length;
+
+      renderGuideline(stats);
+      renderTrendChart(stats);
+      renderHistory(stats);
+      renderEvents();
+    }
+
+    function setText(id, value) {
+      document.getElementById(id).textContent = value;
+    }
+
+    function renderGuideline(stats) {
+      const intervalMs = settings.intervalMinutes * 60 * 1000;
+      const durationMs = settings.durationSeconds * 1000;
+      const windowMs = settings.windowMinutes * 60 * 1000;
+      const avgInterval = stats.avgRecentWindowInterval;
+      const avgDuration = stats.avgRecentWindowDuration;
+      const span = stats.recentWindowOldest.length > 1
+        ? stats.recentWindowOldest[stats.recentWindowOldest.length - 1].start - stats.recentWindowOldest[0].start
+        : 0;
+
+      const intervalScore = avgInterval ? Math.min(1, intervalMs / avgInterval) : 0;
+      const durationScore = avgDuration ? Math.min(1, avgDuration / durationMs) : 0;
+      const windowScore = Math.min(1, span / windowMs);
+      setProgress('intervalProgress', intervalScore);
+      setProgress('durationProgress', durationScore);
+      setProgress('windowProgress', windowScore);
+
+      setText('intervalProgressText', avgInterval
+        ? `${fmtDuration(avgInterval)} avg in ${settings.windowMinutes} min window`
+        : 'Need at least two contractions');
+      setText('durationProgressText', avgDuration
+        ? `${fmtDuration(avgDuration)} avg duration`
+        : 'No recent duration yet');
+      setText('windowProgressText', span
+        ? `${fmtDuration(span)} tracked pattern span`
+        : 'No pattern window yet');
+
+      const intervalMet = avgInterval && avgInterval <= intervalMs;
+      const durationMet = avgDuration && avgDuration >= durationMs;
+      const windowMet = span >= windowMs * 0.95;
+      const watching = stats.recentWindow.length >= 3
+        && avgInterval
+        && avgInterval <= intervalMs * 1.35
+        && (!avgDuration || avgDuration >= durationMs * 0.65);
+
+      ruleBadge.className = 'rule-badge';
+      if (intervalMet && durationMet && windowMet) {
+        ruleBadge.classList.add('call-now');
+        ruleBadge.textContent = `Configured timing guideline reached: about every ${settings.intervalMinutes} min, lasting ${settings.durationSeconds} sec, across ${settings.windowMinutes} min. Call your provider.`;
+      } else if (watching) {
+        ruleBadge.classList.add('watching');
+        ruleBadge.textContent = `Pattern is getting close to your configured guideline. Keep timing and prepare to call your provider if this continues.`;
+      } else {
+        ruleBadge.textContent = `Timing guideline: every ${settings.intervalMinutes} min, lasting ${settings.durationSeconds} sec, for ${settings.windowMinutes} min. Follow your provider's instructions.`;
+      }
+    }
+
+    function setProgress(id, ratio) {
+      document.getElementById(id).style.width = `${Math.round(Math.max(0, Math.min(1, ratio)) * 100)}%`;
+    }
+
+    function renderTrendChart(stats) {
+      const recent = sortOldest(contractions).slice(-12);
+      if (!recent.length) {
+        trendChart.innerHTML = '<div class="chart-empty">No trend data yet.</div>';
+        return;
+      }
+
+      const rows = recent.map((item, index) => {
+        const previous = recent[index - 1];
+        return {
+          item,
+          interval: previous ? item.start - previous.start : null,
+          duration: item.duration,
+          intensity: item.intensity
+        };
+      });
+
+      const maxInterval = Math.max(...rows.map(row => row.interval || 0), settings.intervalMinutes * 60 * 1000);
+      const maxDuration = Math.max(...rows.map(row => row.duration || 0), settings.durationSeconds * 1000);
+
+      trendChart.innerHTML = rows.map(row => {
+        const intervalWidth = row.interval ? Math.max(4, Math.round(row.interval / maxInterval * 100)) : 0;
+        const durationWidth = Math.max(4, Math.round(row.duration / maxDuration * 100));
+        return `
+          <div class="chart-row">
+            <div class="chart-time">${fmtTime(row.item.start)}</div>
+            <div class="bar-wrap" aria-label="Interval ${row.interval ? fmtDuration(row.interval) : 'first'}">
+              <div class="bar-fill interval" style="width:${intervalWidth}%"></div>
+              <div class="bar-label">Int ${row.interval ? fmtDuration(row.interval) : 'First'}</div>
+            </div>
+            <div class="bar-wrap" aria-label="Duration ${fmtDuration(row.duration)}">
+              <div class="bar-fill duration" style="width:${durationWidth}%"></div>
+              <div class="bar-label">Dur ${fmtDuration(row.duration)}</div>
+            </div>
+            <div class="intensity-dot ${row.intensity === null ? '' : 'set'}">${row.intensity === null ? '-' : row.intensity}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderHistory(stats) {
+      if (!contractions.length) {
+        historyList.innerHTML = '<div class="empty">No contractions recorded yet.</div>';
+        return;
+      }
+
+      const total = contractions.length;
+      historyList.innerHTML = contractions.map((item, index) => {
+        const number = total - index;
+        const interval = stats.intervalsById.get(item.id);
+        const close = interval && interval <= settings.intervalMinutes * 60 * 1000;
+        return `
+          <div class="entry">
+            <div class="entry-num">#${number}</div>
+            <div>
+              <div class="entry-main">${fmtDuration(item.duration)}</div>
+              <div class="entry-time">${fmtDateTime(item.start)}</div>
+              ${item.note ? `<div class="entry-note">${escapeHtml(item.note)}</div>` : ''}
+            </div>
+            <div class="entry-pill ${close ? 'close' : ''}">${interval ? fmtDuration(interval) : 'First'}</div>
+            <div class="entry-pill">Pain ${item.intensity === null ? '-' : item.intensity}</div>
+            <div class="entry-pill">${fmtTime(item.end)}</div>
+            <div class="row-actions">
+              <button class="icon-btn" onclick="openEntryEditor('${item.id}')" aria-label="Edit contraction ${number}">Edit</button>
+              <button class="icon-btn" onclick="deleteContraction('${item.id}')" aria-label="Delete contraction ${number}">Del</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderEvents() {
+      if (!laborEvents.length) {
+        eventList.innerHTML = '<div class="empty">No labor events recorded yet.</div>';
+        return;
+      }
+
+      eventList.innerHTML = laborEvents.map(event => `
+        <div class="event-row">
+          <div class="event-type">${escapeHtml(event.type)}</div>
+          <div class="event-time">${fmtDateTime(event.time)}</div>
+          <div class="event-note">${event.note ? escapeHtml(event.note) : '-'}</div>
+          <div class="row-actions">
+            <button class="icon-btn" onclick="deleteLaborEvent('${event.id}')" aria-label="Delete event">Del</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openEntryEditor(id) {
+      editingEntryId = id || null;
+      const now = Date.now();
+      const entry = id
+        ? contractions.find(item => item.id === id)
+        : { start: now - 60 * 1000, end: now, duration: 60 * 1000, intensity: null, note: '' };
+      if (!entry) return;
+
+      document.getElementById('entryEditorTitle').textContent = id ? 'Edit Contraction' : 'Add Missed Contraction';
+      document.getElementById('deleteEntryBtn').style.display = id ? '' : 'none';
+      document.getElementById('editStart').value = toDateTimeLocal(entry.start);
+      document.getElementById('editEnd').value = toDateTimeLocal(entry.end);
+      document.getElementById('editIntensity').value = entry.intensity === null ? '' : entry.intensity;
+      document.getElementById('editNote').value = entry.note || '';
+      updateEditorDurationPreview();
+      entryModal.classList.add('show');
+    }
+
+    function closeEntryEditor() {
+      editingEntryId = null;
+      entryModal.classList.remove('show');
+    }
+
+    function bindEditorPreview() {
+      document.getElementById('editStart').addEventListener('input', updateEditorDurationPreview);
+      document.getElementById('editEnd').addEventListener('input', updateEditorDurationPreview);
+    }
+
+    function updateEditorDurationPreview() {
+      const start = parseDateTimeLocal(document.getElementById('editStart').value);
+      const end = parseDateTimeLocal(document.getElementById('editEnd').value);
+      document.getElementById('editDurationPreview').value = start && end && end >= start
+        ? fmtDuration(end - start)
+        : 'Check times';
+    }
+
+    function saveEntryEditor() {
+      const start = parseDateTimeLocal(document.getElementById('editStart').value);
+      const end = parseDateTimeLocal(document.getElementById('editEnd').value);
+      if (!start || !end || end < start) {
+        alert('End time must be after start time.');
+        return;
+      }
+
+      const entry = normalizeContraction({
+        id: editingEntryId || uid('c'),
+        start,
+        end,
+        duration: end - start,
+        intensity: normalizeIntensity(document.getElementById('editIntensity').value),
+        note: document.getElementById('editNote').value.trim(),
+        createdAt: editingEntryId ? (contractions.find(item => item.id === editingEntryId)?.createdAt || Date.now()) : Date.now(),
+        updatedAt: Date.now()
+      });
+
+      if (editingEntryId) {
+        contractions = contractions.map(item => item.id === editingEntryId ? entry : item);
+      } else {
+        contractions.unshift(entry);
+      }
+      saveContractions();
+      closeEntryEditor();
+      render();
+    }
+
+    function deleteEditingEntry() {
+      if (!editingEntryId) return;
+      deleteContraction(editingEntryId);
+      closeEntryEditor();
+    }
+
+    function deleteContraction(id) {
+      const entry = contractions.find(item => item.id === id);
+      if (!entry) return;
+      if (!confirm(`Delete contraction from ${fmtTime(entry.start)}?`)) return;
+      contractions = contractions.filter(item => item.id !== id);
+      saveContractions();
+      if (pendingDetailId === id) hideQuickPanel();
+      render();
+    }
+
+    function addLaborEvent() {
+      const time = parseDateTimeLocal(document.getElementById('eventTime').value) || Date.now();
+      const event = normalizeEvent({
+        id: uid('e'),
+        type: document.getElementById('eventType').value,
+        time,
+        note: document.getElementById('eventNote').value.trim(),
+        createdAt: Date.now(),
+        updatedAt: Date.now()
+      });
+      laborEvents.unshift(event);
+      saveEvents();
+      document.getElementById('eventNote').value = '';
+      document.getElementById('eventTime').value = toDateTimeLocal(Date.now());
+      render();
+    }
+
+    function deleteLaborEvent(id) {
+      const event = laborEvents.find(item => item.id === id);
+      if (!event) return;
+      if (!confirm(`Delete event "${event.type}"?`)) return;
+      laborEvents = laborEvents.filter(item => item.id !== id);
+      saveEvents();
+      render();
+    }
+
+    function saveNotes() {
+      localStorage.setItem(STORAGE.notes, document.getElementById('notes').value);
+      notesSaved.classList.add('visible');
+      clearTimeout(notesSaveTimer);
+      notesSaveTimer = setTimeout(() => notesSaved.classList.remove('visible'), 1800);
+    }
+
+    function buildSummaryText() {
+      const stats = getStats();
+      const lines = [
+        'Contraction timer summary',
+        `Generated: ${new Date().toLocaleString()}`,
+        `Contractions: ${contractions.length}`,
+        `Last contraction: ${stats.last ? `${fmtDateTime(stats.last.start)}, duration ${fmtDuration(stats.last.duration)}` : '-'}`,
+        `Last interval: ${stats.lastInterval ? fmtDuration(stats.lastInterval) : '-'}`,
+        `Average duration: ${stats.avgDurationAll ? fmtDuration(stats.avgDurationAll) : '-'}`,
+        `Average interval: ${stats.avgIntervalAll ? fmtDuration(stats.avgIntervalAll) : '-'}`,
+        `Last 5 average: ${stats.avgLast5Duration ? `${fmtDuration(stats.avgLast5Duration)} duration / ${stats.avgLast5Interval ? fmtDuration(stats.avgLast5Interval) : '-'} interval` : '-'}`,
+        `Last hour: ${stats.lastHour.length} contractions`,
+        `Average intensity: ${stats.avgIntensity !== null ? `${stats.avgIntensity.toFixed(1)}/10` : '-'}`,
+        `Regularity: ${stats.regularity}`,
+        `Guideline setting: every ${settings.intervalMinutes} min, lasting ${settings.durationSeconds} sec, for ${settings.windowMinutes} min`,
+        '',
+        'Recent contractions:'
+      ];
+
+      sortOldest(contractions).slice(-12).forEach((item, index, list) => {
+        const previous = list[index - 1];
+        const interval = previous ? item.start - previous.start : null;
+        lines.push(`${fmtDateTime(item.start)} | duration ${fmtDuration(item.duration)} | interval ${interval ? fmtDuration(interval) : 'First'} | intensity ${item.intensity === null ? '-' : item.intensity}${item.note ? ` | ${item.note}` : ''}`);
+      });
+
+      if (laborEvents.length) {
+        lines.push('', 'Labor events:');
+        sortOldestEvents(laborEvents).forEach(event => {
+          lines.push(`${fmtDateTime(event.time)} | ${event.type}${event.note ? ` | ${event.note}` : ''}`);
+        });
+      }
+
+      const notes = localStorage.getItem(STORAGE.notes);
+      if (notes) lines.push('', 'Notes:', notes);
+      return lines.join('\n');
+    }
+
+    async function copySummary() {
+      const text = buildSummaryText();
+      try {
+        await navigator.clipboard.writeText(text);
+        alert('Provider summary copied.');
+      } catch (error) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        textarea.remove();
+        alert('Provider summary copied.');
+      }
+    }
+
+    function csvEscape(value) {
+      const text = value === null || value === undefined ? '' : String(value);
+      return `"${text.replace(/"/g, '""')}"`;
+    }
+
+    function downloadCsv() {
+      const rows = [['row_type', 'timestamp', 'end_time', 'duration_seconds', 'interval_seconds', 'intensity', 'event_type', 'note']];
+      const oldest = sortOldest(contractions);
+      oldest.forEach((item, index) => {
+        const previous = oldest[index - 1];
+        const interval = previous ? Math.round((item.start - previous.start) / 1000) : '';
+        rows.push([
+          'contraction',
+          new Date(item.start).toISOString(),
+          new Date(item.end).toISOString(),
+          Math.round(item.duration / 1000),
+          interval,
+          item.intensity === null ? '' : item.intensity,
+          '',
+          item.note || ''
+        ]);
+      });
+      sortOldestEvents(laborEvents).forEach(event => {
+        rows.push([
+          'event',
+          new Date(event.time).toISOString(),
+          '',
+          '',
+          '',
+          '',
+          event.type,
+          event.note || ''
+        ]);
+      });
+
+      const csv = rows.map(row => row.map(csvEscape).join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = `contraction-report-${new Date().toISOString().slice(0, 10)}.csv`;
+      anchor.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function sortOldestEvents(items) {
+      return [...items].sort((a, b) => a.time - b.time);
+    }
+
+    function preparePrintReport() {
+      const stats = getStats();
+      const report = document.getElementById('printReport');
+      const contractionRows = sortOldest(contractions).map((item, index, list) => {
+        const previous = list[index - 1];
+        const interval = previous ? item.start - previous.start : null;
+        return `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${fmtDateTime(item.start)}</td>
+            <td>${fmtDateTime(item.end)}</td>
+            <td>${fmtDuration(item.duration)}</td>
+            <td>${interval ? fmtDuration(interval) : 'First'}</td>
+            <td>${item.intensity === null ? '-' : item.intensity}</td>
+            <td>${escapeHtml(item.note)}</td>
+          </tr>
+        `;
+      }).join('');
+
+      const eventRows = sortOldestEvents(laborEvents).map(event => `
+        <tr>
+          <td>${fmtDateTime(event.time)}</td>
+          <td>${escapeHtml(event.type)}</td>
+          <td>${escapeHtml(event.note)}</td>
+        </tr>
+      `).join('');
+
+      report.innerHTML = `
+        <h1>Contraction Report</h1>
+        <p>Generated ${new Date().toLocaleString()}</p>
+        <h2>Summary</h2>
+        <table>
+          <tbody>
+            <tr><th>Contractions</th><td>${contractions.length}</td><th>Session span</th><td>${stats.sessionSpan ? fmtDuration(stats.sessionSpan) : '-'}</td></tr>
+            <tr><th>Last duration</th><td>${stats.last ? fmtDuration(stats.last.duration) : '-'}</td><th>Last interval</th><td>${stats.lastInterval ? fmtDuration(stats.lastInterval) : '-'}</td></tr>
+            <tr><th>Average duration</th><td>${stats.avgDurationAll ? fmtDuration(stats.avgDurationAll) : '-'}</td><th>Average interval</th><td>${stats.avgIntervalAll ? fmtDuration(stats.avgIntervalAll) : '-'}</td></tr>
+            <tr><th>Last hour</th><td>${stats.lastHour.length} contractions</td><th>Average intensity</th><td>${stats.avgIntensity !== null ? `${stats.avgIntensity.toFixed(1)}/10` : '-'}</td></tr>
+            <tr><th>Regularity</th><td>${stats.regularity}</td><th>Guideline</th><td>Every ${settings.intervalMinutes} min, ${settings.durationSeconds} sec long, ${settings.windowMinutes} min window</td></tr>
+          </tbody>
+        </table>
+        <h2>Contractions</h2>
+        <table>
+          <thead>
+            <tr><th>#</th><th>Start</th><th>End</th><th>Duration</th><th>Interval</th><th>Intensity</th><th>Note</th></tr>
+          </thead>
+          <tbody>${contractionRows || '<tr><td colspan="7">No contractions recorded.</td></tr>'}</tbody>
+        </table>
+        <h2>Labor Events</h2>
+        <table>
+          <thead>
+            <tr><th>Time</th><th>Event</th><th>Note</th></tr>
+          </thead>
+          <tbody>${eventRows || '<tr><td colspan="3">No labor events recorded.</td></tr>'}</tbody>
+        </table>
+        <h2>Notes</h2>
+        <p>${escapeHtml(localStorage.getItem(STORAGE.notes) || '-').replace(/\n/g, '<br>')}</p>
+        <p>This report is a timing aid, not medical advice. Follow provider instructions.</p>
+      `;
+    }
+
+    function printReport() {
+      preparePrintReport();
+      window.print();
+    }
+
+    window.addEventListener('beforeprint', preparePrintReport);
 
     function openBreathingModal() {
       breatheModal.classList.add('show');
@@ -1184,9 +2317,7 @@
 
     function closeBreathingModal() {
       breatheModal.classList.remove('show');
-      if (isBreathing) {
-        stopBreathing();
-      }
+      if (isBreathing) stopBreathing();
     }
 
     function toggleBreathing() {
@@ -1199,7 +2330,7 @@
       btnBreatheToggle.textContent = 'STOP';
       breathePhase = 0;
       runBreathingPhase();
-      breatheInterval = setInterval(runBreathingPhase, 4000); // 4 seconds per phase
+      breatheInterval = setInterval(runBreathingPhase, 4000);
     }
 
     function stopBreathing() {
@@ -1207,54 +2338,45 @@
       clearInterval(breatheInterval);
       btnBreatheToggle.textContent = 'START';
       breatheText.textContent = 'READY';
-      // Rest box state to neutral without jumping (the css transition handles the duration, but here we snap back smoothly or immediately)
-      // Removing all phase classes restores it to original 100x100 box
       breatheBox.className = 'breathe-box';
-      breatheBox.style.transition = 'all 0.5s ease-out'; // quick return
+      breatheBox.style.transition = 'all 0.5s ease-out';
       setTimeout(() => { breatheBox.style.transition = 'all 4s linear'; }, 550);
     }
 
     function runBreathingPhase() {
-      // 4-box phase cycle
       if (breathePhase === 0) {
         breatheText.textContent = 'INHALE';
         breatheBox.className = 'breathe-box inhale';
       } else if (breathePhase === 1) {
         breatheText.textContent = 'HOLD';
-        // Keeps inhale scale, so `hold` class doesn't override scale(2)
         breatheBox.className = 'breathe-box inhale hold';
       } else if (breathePhase === 2) {
         breatheText.textContent = 'EXHALE';
         breatheBox.className = 'breathe-box exhale';
-      } else if (breathePhase === 3) {
+      } else {
         breatheText.textContent = 'HOLD';
-        // Keeps exhale scale (scale 1)
         breatheBox.className = 'breathe-box exhale hold';
       }
-
       breathePhase = (breathePhase + 1) % 4;
     }
 
-    // ── Init ─────────────────────────────────────────────────────────────────────
-    render();
-
-    // keyboard shortcut: Space bar
-    window.addEventListener('keydown', e => {
-      if (e.code === 'Space' && e.target.tagName !== 'TEXTAREA') {
-        e.preventDefault();
+    window.addEventListener('keydown', event => {
+      if (event.code === 'Space' && !['TEXTAREA', 'INPUT', 'SELECT', 'BUTTON'].includes(event.target.tagName)) {
+        event.preventDefault();
         toggleContraction();
       }
-      // Escape key closes breathing modal
-      if (e.code === 'Escape' && breatheModal.classList.contains('show')) {
-        closeBreathingModal();
+      if (event.code === 'Escape') {
+        if (entryModal.classList.contains('show')) closeEntryEditor();
+        if (breatheModal.classList.contains('show')) closeBreathingModal();
       }
     });
 
-    // Click outside modal to close
-    breatheModal.addEventListener('click', (e) => {
-      if (e.target === breatheModal) {
-        closeBreathingModal();
-      }
+    entryModal.addEventListener('click', event => {
+      if (event.target === entryModal) closeEntryEditor();
+    });
+
+    breatheModal.addEventListener('click', event => {
+      if (event.target === breatheModal) closeBreathingModal();
     });
   </script>
 </body>
