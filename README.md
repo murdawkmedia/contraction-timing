@@ -2,9 +2,9 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-48c6b0.svg)](LICENSE)
 [![Open Source](https://img.shields.io/badge/Open%20Source-yes-f2b84b)](https://gitworkshop.dev/npub17j3f7cuhcvjqnf7d80x6rt9hmkkhdguwg4l2th0h4qnhqketr63s6xakwv/git.shakespeare.diy/contraction-timing)
-[![Pages URL](https://img.shields.io/badge/Pages%20URL-GitHub%20Pages-48c6b0)](https://murdawkmedia.github.io/contraction-timing)
+[![Live app](https://img.shields.io/badge/Live%20app-Cloudflare%20Pages-48c6b0)](https://contraction-timing.pages.dev/)
 
-Existing Pages URL: [murdawkmedia.github.io/contraction-timing](https://murdawkmedia.github.io/contraction-timing)
+Live app: [contraction-timing.pages.dev](https://contraction-timing.pages.dev/)
 
 A privacy-first, dependency-free labor tracking app for timing contractions and preparing provider-ready summaries for midwives, doulas, doctors, and support people. It runs as a single static HTML file and stores data only in the user's browser.
 
@@ -19,9 +19,10 @@ With ngit installed:
 git clone nostr://npub17j3f7cuhcvjqnf7d80x6rt9hmkkhdguwg4l2th0h4qnhqketr63s6xakwv/git.shakespeare.diy/contraction-timing
 ```
 
-The existing Pages deployment is separate from this source migration. The
-application's canonical site/asset URLs and local browser storage keys remain
-unchanged; publishing source does not move existing user records or hosting.
+Cloudflare Pages serves the accepted Nostr release. See [DEPLOY.md](DEPLOY.md)
+for manual deployment and verification. Browser storage keys and app behavior
+are preserved. Browser records belong to their original site origin: opening
+the new URL starts separate local storage and does not transfer prior records.
 
 ## Features
 

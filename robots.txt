@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://murdawkmedia.github.io/contraction-timing/sitemap.xml
+Sitemap: https://contraction-timing.pages.dev/sitemap.xml
