@@ -1,12 +1,27 @@
 # Contraction Timer & Provider Report
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-48c6b0.svg)](LICENSE)
-[![Open Source](https://img.shields.io/badge/Open%20Source-yes-f2b84b)](https://github.com/murdawkmedia/contraction-timing)
-[![Live App](https://img.shields.io/badge/Live%20App-GitHub%20Pages-48c6b0)](https://murdawkmedia.github.io/contraction-timing)
+[![Open Source](https://img.shields.io/badge/Open%20Source-yes-f2b84b)](https://gitworkshop.dev/npub17j3f7cuhcvjqnf7d80x6rt9hmkkhdguwg4l2th0h4qnhqketr63s6xakwv/git.shakespeare.diy/contraction-timing)
+[![Pages URL](https://img.shields.io/badge/Pages%20URL-GitHub%20Pages-48c6b0)](https://murdawkmedia.github.io/contraction-timing)
 
-Live app: [murdawkmedia.github.io/contraction-timing](https://murdawkmedia.github.io/contraction-timing)
+Existing Pages URL: [murdawkmedia.github.io/contraction-timing](https://murdawkmedia.github.io/contraction-timing)
 
 A privacy-first, dependency-free labor tracking app for timing contractions and preparing provider-ready summaries for midwives, doulas, doctors, and support people. It runs as a single static HTML file and stores data only in the user's browser.
+
+## Source and mirror
+
+The [Nostr repository](https://gitworkshop.dev/npub17j3f7cuhcvjqnf7d80x6rt9hmkkhdguwg4l2th0h4qnhqketr63s6xakwv/git.shakespeare.diy/contraction-timing) is the source of truth.
+The [Hilary GitHub repository](https://github.com/hilaryduffrules-hash/contraction-timing)
+is a distribution mirror. Use GitWorkshop for contributions and issues.
+With ngit installed:
+
+```bash
+git clone nostr://npub17j3f7cuhcvjqnf7d80x6rt9hmkkhdguwg4l2th0h4qnhqketr63s6xakwv/git.shakespeare.diy/contraction-timing
+```
+
+The existing Pages deployment is separate from this source migration. The
+application's canonical site/asset URLs and local browser storage keys remain
+unchanged; publishing source does not move existing user records or hosting.
 
 ## Features
 
