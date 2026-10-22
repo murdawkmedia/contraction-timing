@@ -3,7 +3,15 @@
 Live app: [contraction-timing.pages.dev](https://contraction-timing.pages.dev/).
 
 The Nostr repository is the source of truth. GitHub is a distribution mirror;
-Actions remain disabled. Hosting is a separate manual release step.
+Actions remain disabled. Hosting is a separate reviewed release step.
+
+The tracked `.ngit/act/workflows/pages.yml` runs synthetic, offline checks and
+assembles exactly the six served files. It uses Node 24 and no package install.
+Run `node .ngit/check-site.mjs` in a fresh checkout to perform the same checks.
+Nostr CI runs are maintainer-directed; publishing a commit does not itself
+deploy the site. Verify the signed result for the exact commit and workflow,
+retain every artifact hash, and release those same bytes only when live differs.
+No production credentials belong in a CI job.
 
 1. Check out the reviewed Nostr `main` commit and confirm a clean worktree.
 2. Review the public payload and preserve existing application behavior and data.
