@@ -2,16 +2,37 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-48c6b0.svg)](LICENSE)
 [![Open Source](https://img.shields.io/badge/Open%20Source-yes-f2b84b)](https://gitworkshop.dev/npub17j3f7cuhcvjqnf7d80x6rt9hmkkhdguwg4l2th0h4qnhqketr63s6xakwv/git.shakespeare.diy/contraction-timing)
-[![Live app](https://img.shields.io/badge/Live%20app-Cloudflare%20Pages-48c6b0)](https://contraction-timing.pages.dev/)
+[![Live app](https://img.shields.io/badge/Live%20app-Cloudflare%20Pages-48c6b0)](https://www.murdawkmedia.com/contraction-timer/)
 
-Live app: [contraction-timing.pages.dev](https://contraction-timing.pages.dev/)
+Live app: [murdawkmedia.com/contraction-timer](https://www.murdawkmedia.com/contraction-timer/)
 
 A privacy-first, dependency-free labor tracking app for timing contractions and preparing provider-ready summaries for midwives, doulas, doctors, and support people. It runs as a single static HTML file and stores data only in the user's browser.
+
+## Hosting and saved history
+
+The primary app is https://www.murdawkmedia.com/contraction-timer/.
+The [original address](https://contraction-timing.pages.dev/) stays available for
+people with saved history. Visits were not tracked, so missing analytics cannot
+establish that the old app was unused. Do not retire the old origin while its
+saved-data recovery is still needed.
+
+Use **Download full backup** at the original address and **Import backup** at
+the new one to transfer contractions, events, notes, settings and an active timer.
+The JSON file stays on your device. Imports verify its checksum, ask before
+replacing this browser's data, download a recovery copy when data already
+exists, and restore prior values if a storage write fails. Keep backup files
+private: they contain your history and notes. CSV remains a provider report,
+not a complete restorable backup.
+
+Old-origin storage keys remain unchanged. The studio-hosted app uses its own
+`contractionTimer.` namespace so sibling apps cannot collide with its keys.
+No account, analytics, remote record storage, or automatic cross-origin transfer
+has been added. Source remains Nostr-first with a passive GitHub mirror.
 
 ## Source and mirror
 
 The [Nostr repository](https://gitworkshop.dev/npub17j3f7cuhcvjqnf7d80x6rt9hmkkhdguwg4l2th0h4qnhqketr63s6xakwv/git.shakespeare.diy/contraction-timing) is the source of truth.
-The [Hilary GitHub repository](https://github.com/hilaryduffrules-hash/contraction-timing)
+The [Murdawk Media GitHub repository](https://github.com/murdawkmedia/contraction-timing)
 is a distribution mirror. Use GitWorkshop for contributions and issues.
 With ngit installed:
 

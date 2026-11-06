@@ -14,31 +14,31 @@
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="language" content="English">
 
-  <link rel="canonical" href="https://contraction-timing.pages.dev" />
+  <link rel="canonical" href="https://www.murdawkmedia.com/contraction-timer/" />
   <link rel="icon" type="image/x-icon" href="./favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
 
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://contraction-timing.pages.dev" />
+  <meta property="og:url" content="https://www.murdawkmedia.com/contraction-timer" />
   <meta property="og:title" content="Contraction Timer & Provider Report" />
   <meta property="og:description"
     content="Track contractions, intensity, labor events, and provider-ready reports without accounts or remote storage." />
   <meta property="og:site_name" content="Contraction Timer by Murdawk Media" />
-  <meta property="og:image" content="https://contraction-timing.pages.dev/og-image.jpg" />
+  <meta property="og:image" content="https://www.murdawkmedia.com/contraction-timer/og-image.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://contraction-timing.pages.dev" />
+  <meta name="twitter:url" content="https://www.murdawkmedia.com/contraction-timer" />
   <meta name="twitter:title" content="Contraction Timer & Provider Report" />
   <meta name="twitter:description"
     content="A private contraction timer with provider-ready statistics, events, and reports." />
-  <meta name="twitter:image" content="https://contraction-timing.pages.dev/og-image.jpg" />
+  <meta name="twitter:image" content="https://www.murdawkmedia.com/contraction-timer/og-image.jpg" />
 
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "Contraction Timer & Provider Report",
-      "url": "https://contraction-timing.pages.dev",
+      "url": "https://www.murdawkmedia.com/contraction-timer",
       "description": "A privacy-first, open-source web application for tracking labor contractions, intensity, labor events, and provider-ready reports.",
       "applicationCategory": "HealthApplication",
       "operatingSystem": "Any",
@@ -1285,6 +1285,16 @@
       </div>
     </section>
 
+    <section class="section" aria-labelledby="backupTitle">
+      <h2 id="backupTitle">Backup and transfer</h2>
+      <p>Backups include contractions, events, notes, settings, and any active timer. Files stay on your device.</p>
+      <p>To move saved history, download a backup at the <a href="https://contraction-timing.pages.dev/">original address</a>, then import it at the <a href="https://www.murdawkmedia.com/contraction-timer/">new address</a>. The original app remains available.</p>
+      <button class="btn" type="button" onclick="downloadBackup()">Download full backup</button>
+      <label class="btn" for="backupFile">Import backup</label>
+      <input id="backupFile" type="file" accept="application/json,.json" onchange="importBackupFile(this)" />
+      <p id="backupStatus" role="status" aria-live="polite"></p>
+    </section>
+
     <section class="section" aria-labelledby="notesTitle">
       <div class="notes-header">
         <h2 id="notesTitle">Notes</h2>
@@ -1364,13 +1374,15 @@
   <div id="printReport"></div>
 
   <script>
-    const STORAGE = {
+    const STORAGE_PREFIX = /^\/contraction-timer(?:\/|$)/.test(window.location.pathname)
+      ? 'contractionTimer.' : '';
+    const STORAGE = Object.fromEntries(Object.entries({
       contractions: 'contractions',
       events: 'laborEvents',
       notes: 'contractionNotes',
       settings: 'laborSettings',
       activeStart: 'activeContractionStart'
-    };
+    }).map(([name, key]) => [name, STORAGE_PREFIX + key]));
 
     const DEFAULT_SETTINGS = {
       intervalMinutes: 5,
@@ -2002,8 +2014,8 @@
             <div class="entry-pill">Pain ${item.intensity === null ? '-' : item.intensity}</div>
             <div class="entry-pill">${fmtTime(item.end)}</div>
             <div class="row-actions">
-              <button class="icon-btn" onclick="openEntryEditor('${item.id}')" aria-label="Edit contraction ${number}">Edit</button>
-              <button class="icon-btn" onclick="deleteContraction('${item.id}')" aria-label="Delete contraction ${number}">Del</button>
+              <button class="icon-btn" onclick="openEntryEditor(${escapeHtml(JSON.stringify(item.id))})" aria-label="Edit contraction ${number}">Edit</button>
+              <button class="icon-btn" onclick="deleteContraction(${escapeHtml(JSON.stringify(item.id))})" aria-label="Delete contraction ${number}">Del</button>
             </div>
           </div>
         `;
@@ -2022,7 +2034,7 @@
           <div class="event-time">${fmtDateTime(event.time)}</div>
           <div class="event-note">${event.note ? escapeHtml(event.note) : '-'}</div>
           <div class="row-actions">
-            <button class="icon-btn" onclick="deleteLaborEvent('${event.id}')" aria-label="Delete event">Del</button>
+            <button class="icon-btn" onclick="deleteLaborEvent(${escapeHtml(JSON.stringify(event.id))})" aria-label="Delete event">Del</button>
           </div>
         </div>
       `).join('');
@@ -2193,6 +2205,124 @@
         textarea.remove();
         alert('Provider summary copied.');
       }
+    }
+
+
+    function backupPayload(value) {
+      return {
+        format: value.format, version: value.version, exportedAt: value.exportedAt,
+        storage: Object.fromEntries(Object.keys(STORAGE).map(name => [name, value.storage[name]]))
+      };
+    }
+
+    async function backupChecksum(payload) {
+      const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(payload)));
+      return Array.from(new Uint8Array(hash), byte => byte.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function createBackup() {
+      const payload = {
+        format: 'contraction-timer-backup', version: 1, exportedAt: new Date().toISOString(),
+        storage: Object.fromEntries(Object.entries(STORAGE).map(([name, key]) => [name, localStorage.getItem(key)]))
+      };
+      return { ...payload, checksum: await backupChecksum(payload) };
+    }
+
+    function saveBackupFile(backup, label = 'backup') {
+      const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = `contraction-timer-${label}-${new Date().toISOString().replace(/[:.]/g, '-')}.json`;
+      anchor.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    async function downloadBackup() {
+      try {
+        saveBackupFile(await createBackup());
+        document.getElementById('backupStatus').textContent = 'Full backup downloaded. Keep it on your own device.';
+      } catch (error) {
+        document.getElementById('backupStatus').textContent = 'Backup could not be created. Your saved data has not changed.';
+      }
+    }
+
+    async function restoreBackup(value) {
+      const names = Object.keys(STORAGE);
+      if (!value || value.format !== 'contraction-timer-backup' || value.version !== 1 ||
+          typeof value.exportedAt !== 'string' || !Number.isFinite(Date.parse(value.exportedAt)) ||
+          !value.storage || typeof value.storage !== 'object' || Array.isArray(value.storage) ||
+          Object.keys(value.storage).length !== names.length ||
+          !names.every(name => Object.hasOwn(value.storage, name) &&
+            (value.storage[name] === null || typeof value.storage[name] === 'string'))) {
+        throw new Error('This is not a supported full timer backup. Nothing was imported.');
+      }
+      if (typeof value.checksum !== 'string' ||
+          await backupChecksum(backupPayload(value)) !== value.checksum) {
+        throw new Error('Backup integrity check failed. Nothing was imported.');
+      }
+      for (const name of ['contractions', 'events']) {
+        if (value.storage[name] !== null) {
+          const rows = JSON.parse(value.storage[name]);
+          const timeKey = name === 'contractions' ? 'start' : 'time';
+          if (!Array.isArray(rows) || !rows.every(row => row && typeof row === 'object' &&
+              !Array.isArray(row) && ['number', 'string'].includes(typeof row[timeKey]) &&
+              Number.isFinite(Number(row[timeKey])) &&
+              (row.id === undefined || row.id === null || ['number', 'string'].includes(typeof row.id)) &&
+              (row.note === undefined || row.note === null || typeof row.note === 'string') &&
+              (row.type === undefined || row.type === null || typeof row.type === 'string') &&
+              ['end', 'duration', 'intensity', 'createdAt', 'updatedAt'].every(key =>
+                row[key] === undefined || row[key] === null ||
+                (['number', 'string'].includes(typeof row[key]) && Number.isFinite(Number(row[key])))))) {
+            throw new Error('Backup history is invalid. Nothing was imported.');
+          }
+        }
+      }
+      if (value.storage.settings !== null) {
+        const settingsValue = JSON.parse(value.storage.settings);
+        if (!settingsValue || typeof settingsValue !== 'object' || Array.isArray(settingsValue) ||
+            !['intervalMinutes', 'durationSeconds', 'windowMinutes'].every(key =>
+              settingsValue[key] === undefined ||
+              (['number', 'string'].includes(typeof settingsValue[key]) && Number.isFinite(Number(settingsValue[key]))))) {
+          throw new Error('Backup settings are invalid. Nothing was imported.');
+        }
+      }
+      if (value.storage.activeStart !== null &&
+          (!Number.isFinite(Number(value.storage.activeStart)) || Number(value.storage.activeStart) < 0)) {
+        throw new Error('Backup timer is invalid. Nothing was imported.');
+      }
+      if (!confirm('Replace this browser\'s timer data with this backup? If this browser has saved data, a recovery backup will be downloaded first.')) return false;
+      const previous = await createBackup();
+      if (Object.values(previous.storage).some(raw => raw !== null)) saveBackupFile(previous, 'before-import');
+      try {
+        for (const name of names) {
+          const raw = value.storage[name];
+          if (raw === null) localStorage.removeItem(STORAGE[name]);
+          else localStorage.setItem(STORAGE[name], raw);
+        }
+      } catch (error) {
+        for (const key of Object.values(STORAGE)) localStorage.removeItem(key);
+        for (const name of names) {
+          const raw = previous.storage[name];
+          if (raw !== null) localStorage.setItem(STORAGE[name], raw);
+        }
+        throw new Error('Import could not be saved. The previous timer data was restored; a recovery backup was also downloaded.');
+      }
+      return true;
+    }
+
+    async function importBackupFile(input) {
+      const status = document.getElementById('backupStatus');
+      const file = input.files?.[0];
+      if (!file) return;
+      try {
+        if (file.size > 32 * 1024 * 1024) throw new Error('Backup is too large. Nothing was imported.');
+        if (await restoreBackup(JSON.parse(await file.text()))) {
+          window.location.reload();
+        } else status.textContent = 'Import canceled. Saved data has not changed.';
+      } catch (error) {
+        status.textContent = error instanceof SyntaxError ? 'Backup file is invalid JSON. Nothing was imported.' : error.message;
+      } finally { input.value = ''; }
     }
 
     function csvEscape(value) {
